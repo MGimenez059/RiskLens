@@ -10,7 +10,7 @@ Last Updated: 2026-10-14
 - Date: 2026-10-14
 - Current baseline: Corrected Proposed v1.0; baseline acceptance pending.
 - Pre-correction source commit: archived initial proposal revision.
-- Corrected review target: Recorded after verification in baseline-review-target.md.
+- Corrected review target: archived corrected proposal revision, verified Proposed; details in baseline-review-target.md.
 - Decision: Owner correction decisions recorded in owner-decisions-2026-10-14.md; exact corrected baseline and ADR acceptance pending GOV-001.
 
 ## Pre-correction behavior
@@ -37,14 +37,14 @@ The owner authorized correction of the Proposed canonical specifications. USD/ex
 
 ## Approval and execution evidence
 - [x] Owner correction decisions recorded; corrected Proposed specifications prepared.
-- [ ] Reviewed Proposed revision committed and identified.
+- [x] Corrected Proposed revision committed and identified; human review/acceptance of that exact target remains pending.
 - [ ] Human approval recorded with reviewer/date/commit and deferred gates.
 - [x] Canonical Proposed specifications corrected without product implementation.
 - [ ] Accepted ADRs and per-ID statuses updated explicitly.
 - [x] Requirement/contract traceability updated; product tests remain planned.
 - [x] CHANGELOG records the applied specification revisions.
 - [x] Final documentation/tooling verification recorded in baseline-correction-report.md.
-- [ ] Exact review-target SHA recorded after commit.
+- [x] Exact review-target SHA recorded after commit in baseline-review-target.md.
 - [ ] Later applicable product tests/evals implemented and executed in their features.
 
 This CR proposes specification changes only. It does not authorize the first vertical slice or require implementing product functionality during this review.
