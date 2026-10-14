@@ -4,6 +4,9 @@ Status: Proposed
 Version: 1.0
 Last Updated: 2026-10-14
 
+## Historical review context
+This report preserves the pre-correction findings and recommendations captured in Git commit archived initial proposal revision. Its statements about unresolved owner choices, untracked files and unchanged specifications describe that earlier revision. The current corrected proposal and finding dispositions are in [baseline-correction-report.md](baseline-correction-report.md). This historical report does not override corrected normative specifications.
+
 ## Review disposition
 **DO NOT ACCEPT the current files unchanged.** The local modular architecture is appropriate. A small set of contract and milestone inconsistencies prevents unqualified acceptance. After the corrections below are applied and the remaining M02 owner choices are recorded, the intended disposition is **ACCEPT WITH EXPLICIT DEFERRALS**. That future disposition is conditional, not approval of this revision.
 

@@ -2,7 +2,9 @@
 
 Status: Proposed
 Version: 1.0
-Last Updated: 2026-10-07
+Last Updated: 2026-10-14
+Applicability: M02 core; later variants gated
+Acceptance Readiness: Prepared for explicit human acceptance against the corrected reviewed commit; not accepted now.
 
 - ID: ADR-009
 - Date: 2026-10-07

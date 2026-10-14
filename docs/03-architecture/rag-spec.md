@@ -2,7 +2,9 @@
 
 Status: Proposed
 Version: 1.0
-Last Updated: 2026-10-07
+Last Updated: 2026-10-14
+
+Applicability: M03; OQ-006/007 remain OPEN. This Proposed specification is not a current M02 dependency.
 
 ## Corpus and ingestion
 Support synthetic UTF-8 Markdown policies in v1. Each document has CT-009 metadata, original byte hash and canonical text hash. Ingestion is human-triggered, never an LLM tool. Validate scope, authority, version and dates before indexing. Reject missing metadata, changed bytes under an existing version, and unsupported formats. Do not fetch embedded URLs.
@@ -15,7 +17,7 @@ Embedding model, dimension, metric and vector store are deferred in ADR-005. Com
 Requests include run_id, as_of, scope and corpus version. Filter eligibility before selecting evidence. top_k is a positive configured integer chosen through evaluation, not a hidden default. Record candidate scores, selected IDs and configuration. Scores are not policy-compliance probabilities. Re-ranking is deferred unless evaluation demonstrates need.
 
 ## Grounding
-Validate citation ID, document/version, normalized hash, section and offsets. Applicability and source support are separate from similarity. Insufficient retrieval cannot establish absence of policy. Preserve contradictory applicable sources and mark conflict under BR-POL-002. A model must not choose authority by similarity or writing quality.
+Validate citation ID, document/version, normalized hash, section and offsets. Applicability and source support are separate from similarity. Insufficient retrieval cannot establish absence of policy. Preserve contradictory applicable sources and mark indeterminate/conflicting under BR-POL-002. Corpus correction/curation occurs outside the run; no generic runtime human-conflict review is required, and recommendation approval cannot establish policy precedence. A model must not choose authority by similarity or writing quality.
 
 Policy evaluation uses human-curated CT-009 predicates. Untranslatable narrative remains indeterminate. Instructions embedded in retrieved documents are untrusted content. Empty evidence yields abstention, not invented policy.
 

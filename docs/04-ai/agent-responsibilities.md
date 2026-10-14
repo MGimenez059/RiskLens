@@ -2,13 +2,13 @@
 
 Status: Proposed
 Version: 1.0
-Last Updated: 2026-10-07
+Last Updated: 2026-10-14
 
 ## AI-ROLE-001: Insight synthesizer
 This is one bounded structured model call in the workflow, not an autonomous risk analyst.
 
-- MAY interpret supplied metrics, explain deterministic findings and suggest analyst investigation.
-- MUST use CT-008, reference the evidence allowlist, identify uncertainty, and pass application validation before publication.
+- MAY interpret supplied metrics, explain deterministic findings and suggest inspecting available evidence in M03. Business-action recommendations require the separate M04 capability and human review.
+- MUST use the M03 CT-008 subset with empty recommendations, reference allowed evidence, identify uncertainty and pass validation. M03 does not depend on reviewer identity or a human-review branch.
 - MUST NOT calculate financial metrics, invent findings or policies, change severity or run state, approve/reject credit, invoke tools, or approve its recommendations.
 
 Risk analysis, quality checks, policy predicates, impact assignment and review gates remain deterministic. A separate Risk Agent, DQ Agent and Policy Agent would duplicate responsibilities without demonstrated benefit.

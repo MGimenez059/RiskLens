@@ -4,6 +4,15 @@ Status: Proposed
 Version: 1.0
 Last Updated: 2026-10-14
 
+## 2026-10-14: CR-001 corrected Proposed baseline
+- Recorded explicit owner correction decisions and preserved the pre-correction proposal/review in Git.
+- Applied USD exposure, global snapshot identity, strict import outcomes and exact operand/serialization policy.
+- Added six M02 contracts, bounded-parser and publication/restart requirements, per-ID milestone status and complete contract traceability.
+- Removed excluded finance metrics/release dependencies; separated M02 raw concentration from M03 alerts and M03 observations from M04 recommendations/review.
+- Documented provisional configurable safety caps, local whole-state cleanup and deferred later decisions.
+- Added governance regression checks and prepared an immutable review target; all baseline/ADR acceptance remains pending.
+- No product feature implementation.
+
 ## 2026-10-14: Baseline acceptance review
 - Added a critical review of all open questions and proposed ADRs with M02 blockers and later deferral gates.
 - Recorded contract and milestone conflicts plus a Proposed correction CR.

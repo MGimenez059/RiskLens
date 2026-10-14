@@ -2,10 +2,10 @@
 
 Status: Proposed
 Version: 1.0
-Last Updated: 2026-10-07
+Last Updated: 2026-10-14
 
 ## Evaluation records and datasets
-Each future case records case_id, category, dataset_version, synthetic generator/seed, input hashes, requirement IDs, rule/config versions, gold expected outputs or claims, allowed evidence IDs, prohibited outputs, grader version and result. Store immutable per-attempt output and sanitized failure reason. Dataset fixtures are PLANNED, not present in this baseline.
+Each future case records case_id, category, dataset_version, synthetic generator/seed, input hashes, requirement IDs, rule/config versions, gold expected outputs or claims, allowed evidence IDs, prohibited outputs, grader version and result. Store immutable per-attempt output and sanitized failure reason. Dataset fixtures are PLANNED, not present in this baseline. DQ/deterministic portions apply in M02; RAG/synthesis in M03; copilot/tool/high-impact review in M04. M03 forbidden-action evals reject high-impact output rather than invoking human review.
 
 Separate development and held-out cases; a human reviews gold labels and rule translations. Version fixtures whenever meaning changes. Deterministic cases use exact expected values or specified decimal rendering. AI cases use structural validators plus human-labeled semantic rubrics. An LLM judge may assist triage but cannot be the sole authority for safety or financial correctness.
 
@@ -16,7 +16,7 @@ Every case fails if the stated PASS condition is not met. No case passes because
 |---|---|---|---|
 | EVAL-DQ-001 | Missing core values. | Import rejected; field/row/rule evidence present; metrics absent. | FR-DQ-001/002 |
 | EVAL-DQ-002 | Duplicate records. | Duplicate identity reported; no silent deduplication or partial aggregation. | FR-DQ-001/002 |
-| EVAL-DQ-003 | Invalid numeric/date values. | Core-invalid amounts/dates rejected with correct location; no coercion. | FR-DQ-002 |
+| EVAL-DQ-003 | Invalid numeric/date values. | Core-invalid amounts/dates rejected with correct location; no coercion. CT-020 cap overflow yields limit_failed and capped defects never produce filtered metrics. | FR-DQ-002 |
 | EVAL-RISK-001 | Healthy configured synthetic portfolio. | Exact expected metrics; no configured detector finding; narrative does not claim universal safety or compliance. | FR-RISK-001, FR-AI-001 |
 | EVAL-RISK-002 | Valid but anomalous values. | Configured detector emits expected finding/evidence; invalid core values instead follow DQ path. | FR-RISK-002 |
 | EVAL-RISK-003 | Increasing delinquency. | Correct exact rate difference and both snapshot references; incompatible history yields unavailable. | FR-RISK-003 |

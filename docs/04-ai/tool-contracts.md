@@ -2,12 +2,12 @@
 
 Status: Proposed
 Version: 1.0
-Last Updated: 2026-10-07
+Last Updated: 2026-10-14
 
 ## Shared transport contract
 All requests contain run_id: Id and call_id: Id. Reject unknown fields and invalid types. The application binds run_id to the active request before tool invocation; model-supplied scope never grants access. Results are tagged envelopes: success with typed data, or error with code, sanitized message and retryable boolean. Error codes: invalid_argument, not_found, scope_denied, dependency_unavailable, timeout, conflict, internal_error. Errors never masquerade as empty successful results.
 
-All tools are read-only in v1. Call events are the only side effect, deduplicated by call_id. Same arguments and pinned artifacts/config return the same stored result; changed arguments under the same call_id conflict. Unknown values are not silently coerced. No execute_anything, arbitrary SQL, shell, generic HTTP or filesystem tool.
+Applicability: M04 evidence-copilot product use; justified M03 use requires its own readiness evidence. Tools cannot mutate analytical results. Exchange audit events and TOOL-003 retrieval-report appends are permitted side effects, deduplicated by call_id. Same arguments and pinned artifacts/config return the same stored result; changed arguments under the same call_id conflict. Unknown values are not silently coerced. No execute_anything, arbitrary SQL, shell, generic HTTP or filesystem tool.
 
 | Tool ID / name | Purpose | Input schema in addition to shared fields | Output schema | Side effects / idempotency | Failure modes | LLM exposure | Security |
 |---|---|---|---|---|---|---|---|

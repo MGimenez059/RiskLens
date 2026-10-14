@@ -2,7 +2,9 @@
 
 Status: Proposed
 Version: 1.0
-Last Updated: 2026-10-07
+Last Updated: 2026-10-14
+Applicability: M02 core; later variants gated
+Acceptance Readiness: Prepared for explicit human acceptance against the corrected reviewed commit; not accepted now.
 
 - ID: ADR-004
 - Date: 2026-10-07
@@ -15,7 +17,7 @@ Last Updated: 2026-10-07
 The first slice needs upload, tables/charts, status and evidence navigation. Product quality must not depend on a specific presentation framework.
 
 ## Decision
-Propose Streamlit as a local v1 candidate, subject to OQ-009 and an approved UI interaction specification. Keep calculations and persistence outside UI callbacks. Review actions carry explicit run revisions and idempotency keys.
+The owner selects Streamlit as the local single-user v1 presentation adapter, pending formal ADR acceptance. An M02 feature interaction spec still precedes implementation. Keep calculations and persistence outside UI callbacks. Later M04 review actions carry explicit run revisions and idempotency keys; they are not M02 UI prerequisites.
 
 ## Alternatives
 A separate web frontend/API offers more interaction control but increases initial scope. A notebook or CLI cannot satisfy the visual product requirement alone.

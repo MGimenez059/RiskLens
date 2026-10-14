@@ -2,7 +2,9 @@
 
 Status: Proposed
 Version: 1.0
-Last Updated: 2026-10-07
+Last Updated: 2026-10-14
+Applicability: M02 core; later variants gated
+Acceptance Readiness: Prepared for explicit human acceptance against the corrected reviewed commit; not accepted now.
 
 - ID: ADR-002
 - Date: 2026-10-07
@@ -23,4 +25,4 @@ Manual validation minimizes dependencies but duplicates boundary diagnostics. Py
 ## Consequences
 DTO-to-domain mapping adds code that must have contract tests. Strict mode alone does not validate financial semantics or eliminate all representation differences. No Pydantic dependency or model is installed now.
 
-Reference consulted 2026-10-07: [Pydantic strict mode](https://pydantic.dev/docs/validation/latest/concepts/strict_mode/). Verify JSON/Python input behavior against CT-001 through CT-013 during implementation.
+Reference consulted 2026-10-07: [Pydantic strict mode](https://pydantic.dev/docs/validation/latest/concepts/strict_mode/). Verify JSON/Python input behavior against CT-001 through CT-020, scoped to their milestones during implementation.

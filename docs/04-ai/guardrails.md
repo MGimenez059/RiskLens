@@ -2,7 +2,7 @@
 
 Status: Proposed
 Version: 1.0
-Last Updated: 2026-10-07
+Last Updated: 2026-10-14
 
 | Boundary | Enforcement | Failure response |
 |---|---|---|
@@ -10,7 +10,7 @@ Last Updated: 2026-10-07
 | Tool selection | Application allowlist, run scope and budget checks before invocation. | Refuse unknown/disallowed tools; record safe error. |
 | Model output | Validate schema, evidence existence/scope, numeric references, policy applicability and prohibited actions. | Discard candidate; preserve deterministic outputs; partial status. |
 | Policy interpretation | BR-POL-001/002/003 and curated predicates. | Indeterminate or abstained, never assumed compliance. |
-| Recommendations | Application impact classification under BR-POL-004. | High impact remains pending human review. |
+| Recommendations | M03 forbids business-action/high-impact output; M04 uses application impact classification under BR-POL-004. | High impact remains pending human review. |
 | Recovery | Immutable outputs, revision checks and idempotent commits. | Reject stale/conflicting state without overwriting results. |
 
 Reference existence alone cannot prove semantic entailment. Structured numeric references reduce numeric fabrication, but prose grounding still needs labeled evals and human audit. Automated validators must not be described as complete hallucination detection. Unsupported semantic claims found during review fail the relevant eval/release gate.

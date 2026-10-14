@@ -2,7 +2,9 @@
 
 Status: Proposed
 Version: 1.0
-Last Updated: 2026-10-07
+Last Updated: 2026-10-14
+Applicability: M03 graph
+Acceptance Readiness: Blocked by OQ-009 and graph/state coordination review.
 
 - ID: ADR-001
 - Date: 2026-10-07

@@ -2,7 +2,9 @@
 
 Status: Proposed
 Version: 1.0
-Last Updated: 2026-10-07
+Last Updated: 2026-10-14
+Applicability: M02 core; later variants gated
+Acceptance Readiness: Prepared for explicit human acceptance against the corrected reviewed commit; not accepted now.
 
 - ID: ADR-007
 - Date: 2026-10-07
@@ -21,4 +23,4 @@ Start with structured local events and CT-011 manifests. Separate audit data, ch
 Plain console strings lose machine-readable lineage. Hosted tracing may help later but adds a provider and export/privacy decisions. Adopt it only through a later ADR with a concrete need.
 
 ## Consequences
-The project owns its event schema and retention rules. Event completeness and redaction require tests; retention remains OQ-010. Local events alone do not provide production incident management.
+CT-019 supplies the M02 typed event catalog and CT-018 the owner-approved retention/cleanup boundary. Model/tool/review fields apply only in later enabled stages. The project owns its event schema. Event completeness and redaction require tests; targeted later lifecycle remains OQ-010. Local events alone do not provide production incident management.

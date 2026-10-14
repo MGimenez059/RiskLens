@@ -2,49 +2,50 @@
 
 Status: Proposed
 Version: 1.0
-Last Updated: 2026-10-07
+Last Updated: 2026-10-14
 
-## Entities and value objects
-| Concept | Responsibility and relationship | Invariant / lifecycle |
+## M02 aggregates and value objects
+Status: Proposed
+Applicability: M02
+
+| Concept | Responsibility | Invariant |
 |---|---|---|
-| Portfolio | Identity, label and currency; owns snapshot sequence. | Currency fixed within v1 portfolio. |
-| PortfolioSnapshot | Immutable input aggregate of Loan observations, manifest and source hash. | Unique loan IDs, explicit as_of; received to validated or rejected. Never mutate an accepted snapshot. |
-| Loan | Snapshot observation of a synthetic obligation. | CT-002 constraints; identity is snapshot plus loan_id. |
-| BorrowerRef | Value object customer_id used for grouping. | No independent lifecycle or borrower table in v1. |
-| Money | Decimal amount plus currency. | No implicit FX or float arithmetic. |
-| CreditExposure | Derived value from outstanding principal. | Not an independent entity or duplicated stored source field. |
-| PortfolioMetrics | Immutable computed result for snapshot and calculation version. | Denominators and unavailable reasons preserved. |
-| EvidenceRef | Typed reference to source row, metric, policy chunk, or rule evaluation. | Resolvable within immutable run inputs; no unrestricted URL or arbitrary path. |
-| DataQualityFinding | Input defect and source location. | Rejected records retained only as audit evidence under retention policy. |
-| RiskFinding | Deterministic rule observation. | Rule version, inputs and evidence are mandatory. |
-| PolicyFinding | Evaluation outcome for a curated rule. | Violation/compliant require deterministic proof and applicable source. |
-| ExecutiveInsight | Validated interpretation of findings. | No authoritative numeric literals; claims link evidence. |
-| Recommendation | Suggested analyst action linked to insight. | High impact defaults to pending review; never directly executed. |
-| CreditPolicy / PolicyRule | Immutable policy version and reviewed predicate with source mapping. | Draft to curated; superseded versions retained for historic runs. |
-| AnalysisRun | Execution aggregate joining immutable input/config with outputs and events. | Only application transitions status; revision supports concurrency control. |
-| HumanReview | Append-only human decision on a specific recommendation revision. | Cannot alter original metrics, evidence, or output text. |
+| Portfolio | One synthetic USD collection owning snapshots. | Currency fixed; no FX. |
+| PortfolioSnapshot | Complete immutable observation identified by snapshot_id. | Globally unique identity and exactly one portfolio_id owner; valid empty snapshots permitted. |
+| Loan | Snapshot observation of obligation. | CT-002; unique loan_id inside snapshot. Open zero-principal loan remains in count population. |
+| BorrowerRef | Synthetic customer_id grouping value. | No personal identity or separate CRUD aggregate. |
+| Money / CreditExposure | Exact USD minor-unit value; exposure derived from principal. | No floating authority, no duplicate exposure source entity. |
+| PortfolioMetrics | Immutable calculation with raw groups, exact operands and quantized derived values. | CT-004/017; availability by each denominator, no mandatory excluded-finance stub. |
+| DataQualityFinding | Blocking contract diagnostic linked to immutable validation report. | CT-005/019; valid null segment/empty/zero population is not a defect. |
+| ImportResult | Typed complete-population validation/operation outcome. | CT-015; application-assigned identity; no valid snapshot for non-valid outcome. |
+| EvidenceRef | Run-scoped immutable artifact locator. | M02 CT-003 subset; no cross-run IDs or arbitrary paths. |
+| AnalysisRun | Execution aggregate with input/config/code lineage and stage outcomes. | CT-011/016; Application alone changes lifecycle; terminal results immutable. |
 
-## Relationships
+## M02 run lifecycle
+Status: Proposed
+Applicability: M02
+
+created -> running -> succeeded, rejected, conflict, limit_failed or failed. Terminal runs are immutable. A new analysis key/config deliberately creates a new run, optionally with parent_run_id. Exact same analysis key/fingerprint replays the original result, without a new successful commit.
+succeeded requires valid complete input, completed deterministic calculation and durable metadata/files. A valid empty population and unavailable ratios from zero denominators can succeed. rejected means input contract defects. conflict preserves earlier identity/key bindings. limit_failed means input safety bound exceeded. failed means operational/configuration/calculation error or no durable finalization; it must not claim persistent success. If metadata storage cannot record failure, report a non-durable operation error rather than inventing a persisted run.
+Interrupted running state is reconciled by CT-018, not a graph checkpoint. Restart may read verified committed results and repeat an unfinished deterministic operation; it cannot overwrite terminal payloads or corrupt references. No partial/pending_review status or AI readiness is required by M02.
+
+## Later entities and lifecycle variants
+Status: Proposed
+Applicability: M03/M04; open gates apply
+
+RiskFinding, PolicyFinding, CreditPolicy/PolicyRule and ExecutiveInsight are M03 concepts governed by their Proposed contracts. M03 insight is observations/explanations/inspection suggestions with no business-action recommendations. If later AI fails after valid metrics, retain metrics and mark requested optional stage failed/unavailable with partial result quality. Do not change valid metrics to failed merely because an optional interpretive stage failed.
+Recommendation and HumanReview are M04 concepts. No M03 pending-review dependency. M04 uses provisional_quality and pending_review to preserve required human action; reviewer identity, review aggregation and checkpoint coordination remain OQ-009/012. Policy conflicts stay indeterminate and are corrected in corpus curation outside an analysis; they are not recommendation-review targets.
+
 ```mermaid
 erDiagram
-    Portfolio ||--o{ PortfolioSnapshot : contains
+    Portfolio ||--o{ PortfolioSnapshot : owns
     PortfolioSnapshot ||--o{ Loan : observes
-    AnalysisRun }o--|| PortfolioSnapshot : analyzes
-    AnalysisRun ||--o| PortfolioMetrics : produces
-    AnalysisRun ||--o{ RiskFinding : records
-    AnalysisRun ||--o{ PolicyFinding : records
-    CreditPolicy ||--o{ PolicyRule : defines
-    PolicyFinding }o--|| PolicyRule : evaluates
-    AnalysisRun ||--o{ ExecutiveInsight : synthesizes
-    ExecutiveInsight ||--o{ Recommendation : suggests
-    Recommendation ||--o{ HumanReview : receives
+    AnalysisRun }o--o| PortfolioSnapshot : analyzes_if_valid
+    AnalysisRun ||--o| PortfolioMetrics : produces_if_valid
+    AnalysisRun ||--o{ DataQualityFinding : records
+    AnalysisRun ||--o{ ExecutiveInsight : later_synthesizes
+    ExecutiveInsight ||--o{ Recommendation : M04_suggests
+    Recommendation ||--o{ HumanReview : M04_receives
 ```
 
-## AnalysisRun lifecycle
-`created -> running -> succeeded | partial | rejected | failed | pending_review`.
-`pending_review -> running -> succeeded | partial | failed` only after a valid human action and revision check. Infrastructure recovery may continue `running` from its last committed checkpoint. Terminal runs are immutable; a deliberate rerun receives a new run_id and parent_run_id.
-`rejected` means input invalid. `failed` means no usable deterministic result or durable finalization failed. `partial` means deterministic results exist but a requested optional analysis or AI stage is unavailable/failed. `succeeded` means all requested stages completed; optional stages not requested are explicitly not_requested. `pending_review` is nonterminal and records the provisional result quality separately. Human rejection changes recommendation visibility, not deterministic result quality.
-The application records stage outcomes and completeness; graph topology alone does not decide domain success.
-
-## Simplifications
-No Borrower CRUD, exposure entity, autonomous agent hierarchy, or generic repository framework. Dataclasses/enums can represent the domain later. Pydantic belongs at boundaries; domain objects do not inherit provider or orchestration state classes.
+Relationship diagram includes Proposed later variants; invalid operations have no validated snapshot. No borrower CRUD, autonomous agent hierarchy or generic repository framework. Standard Python domain values remain independent of SQLite, Streamlit, Pydantic, providers and graph frameworks.

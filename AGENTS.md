@@ -2,15 +2,15 @@
 
 Status: Proposed
 Version: 1.0
-Last Updated: 2026-10-07
+Last Updated: 2026-10-14
 
-Read this file before working. Acceptance status and current implementation gate: [baseline](docs/00-project/baseline.md). Current authorization covers specifications and tooling only. Product implementation requires GOV-001.
+Read this file before working. Acceptance status and current implementation gate: [baseline](docs/00-project/baseline.md). Current authorization covers corrected specifications, governance tests and review-target commits only. Owner correction decisions are in docs/changes/owner-decisions-2026-10-14.md; they do not formally accept the resulting baseline. Read docs/00-project/baseline-correction-report.md for the current recommendation and remaining gates. Product implementation requires GOV-001.
 
 ## Before changes
 1. Read [principles](docs/00-project/principles.md), the canonical precedence source, and [writing policy](docs/00-project/writing-policy.md).
 2. Identify relevant requirement IDs and criteria; read domain contracts.
 3. Read relevant ADRs and open questions; inspect tests, evals, and traceability.
-4. Check GOV-002. Never resolve TBD by inventing requirements.
+4. Check GOV-002. Never resolve TBD by inventing requirements. Check per-ID Status and Applicability; never make later AI/review/checkpoint gates prerequisites for deterministic M02 or accept an entire mixed-stage document implicitly.
 5. If requested behavior conflicts with specifications, STOP dependent work, report **SPEC CONFLICT** with paths and IDs, and propose a [CR](docs/changes/README.md). Update and approve specs before implementation.
 6. Never silently change approved specs or introduce architecture without an ADR. Never overwrite historical decisions.
 7. Maintain traceability. Prefer deterministic logic, independent domain code, and clear contracts. Justify dependencies. Do not refactor unrelated code or broaden scope implicitly.

@@ -15,4 +15,5 @@ htmlcov/
 data/*
 !data/README.md
 artifacts/private/
+.risklens/
 *.sqlite*

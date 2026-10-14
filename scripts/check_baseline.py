@@ -144,6 +144,125 @@ def identifier_errors(root: Path) -> list[str]:
     return sorted(set(errors))
 
 
+def specification_records(path: Path, prefix: str) -> dict[str, str]:
+    content = path.read_text(encoding="utf-8")
+    expression = rf"^## ({prefix}(?:-[A-Z]+)*-\d{{3}}):.*?(?=^## |\Z)"
+    return {
+        match.group(1): match.group(0)
+        for match in re.finditer(expression, content, re.MULTILINE | re.DOTALL)
+    }
+
+
+def milestone_errors(root: Path) -> list[str]:
+    errors: list[str] = []
+    requirements = root / "docs/01-requirements"
+    functional = specification_records(requirements / "functional-requirements.md", "FR")
+    criteria = specification_records(requirements / "acceptance-criteria.md", "AC")
+    contracts = specification_records(root / "docs/02-domain/data-contracts.md", "CT")
+    expected = {
+        "FR-DQ-001": "M02",
+        "FR-DQ-002": "M02",
+        "FR-DQ-003": "M02",
+        "FR-RISK-001": "M02",
+        "FR-RISK-002": "M03",
+        "FR-RISK-003": "M03",
+        "FR-AI-001": "M03",
+        "FR-AI-002": "M04",
+        "FR-AI-003": "M04",
+        "FR-UI-001": "M02",
+        "FR-UI-002": "M04",
+        "FR-OBS-001": "M02",
+        "FR-OBS-002": "M03",
+        "FR-OBS-003": "M02",
+        "AC-AI-001": "M03",
+        "AC-AI-002": "M04",
+        "AC-AI-003": "M04",
+        "AC-UI-001": "M02",
+        "AC-UI-002": "M04",
+    }
+    for identifier, stage in expected.items():
+        record = {**functional, **criteria}.get(identifier, "")
+        pattern = rf"^\s*(?:- )?Applicability: {stage}\b"
+        if not re.search(pattern, record, re.MULTILINE):
+            errors.append(f"milestone: {identifier} requires explicit {stage} applicability")
+    for identifier, record in {**functional, **criteria, **contracts}.items():
+        if not re.search(r"^\s*(?:- )?Status: (Proposed|Accepted|Deprecated)$", record, re.M):
+            errors.append(f"specification: missing per-ID status for {identifier}")
+        if not re.search(r"^\s*(?:- )?Applicability: .+$", record, re.M):
+            errors.append(f"specification: missing applicability for {identifier}")
+    if re.search(r"\bdefault_rate\b", contracts.get("CT-004", ""), re.I):
+        errors.append("active-v1 metric schema must not contain the deferred default_rate field")
+    request = contracts.get("CT-016", "")
+    stage_row = next((line for line in request.splitlines() if "| requested_stages |" in line), "")
+    if "Exactly validate_portfolio, calculate_metrics." not in stage_row:
+        errors.append("M02 request stages must be explicit validation and deterministic metrics")
+    if re.search(r"human_review|pending_review|generate_insights|retrieve_policy", stage_row):
+        errors.append("M02 request cannot require AI, policy or human-review stages")
+    synthesis = functional.get("FR-AI-001", "").lower()
+    insight = contracts.get("CT-008", "").lower()
+    if "empty recommendations in m03" not in synthesis or "recommendations is empty" not in insight:
+        errors.append("M03 synthesis must explicitly prohibit business-action recommendations")
+    graph = (root / "docs/03-architecture/graph-spec.md").read_text(encoding="utf-8")
+    for node in ("analyze_risk", "generate_insights", "validate_insights"):
+        row = next((line for line in graph.splitlines() if line.startswith(f"| {node} |")), "")
+        cells = [cell.strip() for cell in row.strip("|").split("|")]
+        transition = cells[-2] if len(cells) == 8 else ""
+        if "review_gate" in transition:
+            if "M04" not in transition or not re.search(
+                r"finalize in M03|M03 finalize", transition
+            ):
+                errors.append(f"M03 graph route for {node} cannot require review_gate")
+    return errors
+
+
+def contract_traceability_errors(root: Path) -> list[str]:
+    defined = specification_records(root / "docs/02-domain/data-contracts.md", "CT")
+    matrix = (root / "docs/05-testing/traceability.md").read_text(encoding="utf-8")
+    rows = re.findall(r"^\| (CT-\d{3}) \|(.+)$", matrix, re.MULTILINE)
+    mapped = [identifier for identifier, _ in rows]
+    errors = [
+        f"contract traceability: missing {item}" for item in sorted(set(defined) - set(mapped))
+    ]
+    if len(mapped) != len(set(mapped)):
+        errors.append("contract traceability: duplicate contract row")
+    for identifier, row in rows:
+        if identifier not in defined:
+            errors.append(f"contract traceability: unknown {identifier}")
+        if not REQ.search(row):
+            errors.append(f"contract traceability: {identifier} has no requirement mapping")
+    return errors
+
+
+def acceptance_and_identity_errors(root: Path) -> list[str]:
+    errors: list[str] = []
+    mixed = (
+        "docs/01-requirements/functional-requirements.md",
+        "docs/01-requirements/non-functional-requirements.md",
+        "docs/01-requirements/acceptance-criteria.md",
+        "docs/02-domain/business-rules.md",
+        "docs/02-domain/data-contracts.md",
+        "docs/02-domain/domain-model.md",
+    )
+    for relative in mixed:
+        content = (root / relative).read_text(encoding="utf-8")
+        first = re.search(r"^Status: (\w+)$", content, re.M)
+        if first and first.group(1) == "Accepted":
+            rest = content[first.end() :]
+            if re.search(r"^\s*(?:- )?Status: Proposed|^\| [^|]+ \| Proposed \|", rest, re.M):
+                errors.append(
+                    f"acceptance: mixed-stage document cannot be blanket Accepted: {relative}"
+                )
+    rules = (root / "docs/02-domain/business-rules.md").read_text(encoding="utf-8")
+    identity = next((line for line in rules.splitlines() if "| BR-DQ-001 |" in line), "")
+    if "globally unique" not in identity or "exactly one portfolio_id owner" not in identity:
+        errors.append(
+            "snapshot identity: global uniqueness and exactly one portfolio owner required"
+        )
+    if "portfolio_id plus snapshot_id" in identity:
+        errors.append("snapshot identity: composite-only identity conflicts with global references")
+    return errors
+
+
 def main() -> int:
     errors = (
         metadata_and_style_errors(ROOT)
@@ -151,6 +270,9 @@ def main() -> int:
         + traceability_errors(ROOT)
         + domain_boundary_errors(ROOT)
         + identifier_errors(ROOT)
+        + milestone_errors(ROOT)
+        + contract_traceability_errors(ROOT)
+        + acceptance_and_identity_errors(ROOT)
     )
     if errors:
         print("\n".join(errors))

@@ -2,7 +2,10 @@
 
 Status: Proposed
 Version: 1.0
-Last Updated: 2026-10-07
+Last Updated: 2026-10-14
+
+## Historical initial-baseline report
+This report describes initial preparation on 2026-10-07, preserved in Git commit archived initial proposal revision. Its Default scope, file inventory and uncommitted-state statements are historical. Current corrected behavior and verification are in [baseline-correction-report.md](baseline-correction-report.md). No original result below is retroactively rewritten as a later acceptance decision.
 
 ## 1. Files created
 The workspace was empty and was not a Git repository. A local main repository was initialized. No commit, remote, push, product implementation or acceptance record was created. The complete [file inventory](file-inventory.md) lists 79 files, including 56 Markdown documents. uv.lock records development dependencies; the package build backend is declared separately in pyproject.toml. There are no product runtime dependencies.

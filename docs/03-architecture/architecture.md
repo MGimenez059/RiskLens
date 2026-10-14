@@ -2,18 +2,18 @@
 
 Status: Proposed
 Version: 1.0
-Last Updated: 2026-10-07
+Last Updated: 2026-10-14
 
 ## Deployment and boundaries
 One local Python process with presentation, application use cases, pure domain calculations, infrastructure adapters and optional graph orchestration. No separate API server, distributed queue or agent supervisor. ADR-001 through ADR-008 record alternatives and status.
 
 ```mermaid
 flowchart TD
-    UI[Presentation: dashboard and review] --> APP[Application: use cases and ports]
-    GRAPH[AI orchestration: bounded workflow] --> APP
+    UI[Presentation: M02 dashboard, M04 review] --> APP[Application: use cases and ports]
+    GRAPH[AI orchestration: M03+ Proposed workflow] --> APP
     APP --> DOMAIN[Domain: rules and calculations]
     INFRA[Infrastructure: CSV, SQLite, providers, retrieval] -. implements ports .-> APP
-    UI --> GRAPH
+    UI -. later approved capability .-> GRAPH
     INFRA --> STORE[(Local artifacts and SQLite)]
 ```
 
@@ -28,11 +28,19 @@ flowchart TD
 Future ports: SnapshotStore, RunStore, EvidenceStore, PolicyRetriever, StructuredModel, ReviewStore. Introduce each only when a slice uses it. Composition lives outside domain. tools/ contains narrow adapters over application operations rather than duplicate logic. Domain uses standard Python types/dataclasses; Pydantic may validate boundaries after ADR-002 acceptance.
 
 ## Persistence and SQL
-ADR-003 proposes SQLite for run/review/event metadata and content-addressed local files for snapshots/results. Use parameterized queries, foreign keys, unique idempotency keys and revision checks. Graph checkpoints are technically separate from the domain audit record even if both use SQLite.
+Status: Proposed
+Applicability: M02 core; graph extension remains Proposed
+
+Owner decisions select local SQLite metadata and immutable artifact files with one writer for v1; ADR-003 remains Proposed pending GOV-001 acceptance. M02 run/import/event records and restart behavior follow CT-015/016/018/019. Review/checkpoint records belong to later slices, not M02. Use parameterized queries, foreign keys, unique idempotency keys and revision checks. Graph checkpoints are a later technical store separate from audit metadata. No graph checkpointer is required in M02. The .risklens/state root and stopped-application whole-state cleanup are specified in CT-018.
+
+M02 publishes verified immutable files before one SQLite metadata transaction under CT-018; no cross-store atomicity or automatic orphan collection is claimed. Global snapshot_id ownership and import/analysis fingerprint bindings are transactional. The following graph recovery direction remains Proposed under OQ-009/ADR-001, and is not an M02 implementation contract.
 
 Node output uniqueness is `(run_id, node_id, input_hash, config_hash)`. If a crash occurs after result commit but before checkpoint commit, recover by reading the committed result and advancing the checkpoint. Never checkpoint an uncommitted reference. Do not promise exactly-once external model invocation. Test schema migrations and incompatible checkpoints before completing persistence work.
 
 ## Incremental adoption
-M02 calls Application directly without graph/provider dependencies. M03 introduces LangGraph for justified resume and branching needs. LangChain may support retrieval/provider adapters behind ports; a direct SDK remains an alternative when simpler. No runtime dependency is installed in this baseline.
+Status: Proposed
+Applicability: M02; future graph/provider variants Proposed
+
+M02 uses Streamlit as a presentation adapter calling Application directly. Calculations and durable state never exist only in callbacks; UI reruns use CT-016 replay keys. No graph/provider dependency is installed for M02. M03 may introduce LangGraph for justified resume/branching after ADR-001 and its readiness gates are accepted. LangChain may support retrieval/provider adapters behind ports; a direct SDK remains an alternative when simpler. No runtime dependency is installed in this baseline.
 
 SQLite serializes writes; the initial model has one local writer. UI reruns must not restart work without idempotency keys. Schema validation alone does not establish factual truth; semantic grounding requires evals and review. Deployment, tenancy and advanced policy languages remain outside scope.

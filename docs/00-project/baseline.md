@@ -2,7 +2,7 @@
 
 Status: Proposed
 Version: 1.0
-Last Updated: 2026-10-07
+Last Updated: 2026-10-14
 
 This baseline specifies the proposed v1 product. Product functionality is NOT IMPLEMENTED. Initial executable code is limited to repository verification and development tooling.
 
@@ -13,12 +13,14 @@ This baseline specifies the proposed v1 product. Product functionality is NOT IM
 4. [Domain](../02-domain/domain-model.md), [business rules](../02-domain/business-rules.md), [contracts](../02-domain/data-contracts.md).
 5. [Architecture](../03-architecture/architecture.md), [graph](../03-architecture/graph-spec.md), [ADRs](../adr/README.md).
 6. [Evaluations](../04-ai/evaluation-spec.md), [traceability](../05-testing/traceability.md).
-7. [Open decisions](open-questions.md), [review report](review-report.md).
+7. [Open decisions](open-questions.md), [correction report](baseline-correction-report.md), [owner decisions](../changes/owner-decisions-2026-10-14.md). Historical [acceptance review](baseline-acceptance-review.md) and [initial report](review-report.md) retain prior findings and are not current normative behavior.
 
 ## GOV-001: Human acceptance
 Initial status is Proposed. The user is the product owner. An agent cannot approve this baseline.
 An acceptance record in `docs/changes/` must identify the reviewed commit, baseline version, reviewer, date, accepted documents, individually accepted ADRs, exceptions, and deferred decisions with their implementation gates. Update document statuses explicitly after approval. Proposed documents alone never authorize product implementation.
 The owner may accept the architecture direction while deferring decisions that do not block the next slice. Undefined financial semantics cannot be accepted as implementation-ready behavior.
+The correction prompt records owner decisions and authorizes their application to Proposed documents. It does not approve the exact resulting commit or automatically accept ADRs. No acceptance record exists yet.
+Mixed-stage containers stay Proposed. Each normative requirement/rule/contract has Status and Applicability. A future acceptance record enumerates accepted IDs and variants; unresolved later variants remain Proposed. Reject blanket acceptance of a mixed container while it contains Proposed or deferred sections.
 Changes to Proposed documents are recorded in CHANGELOG. After acceptance, use the CR process. Allowed statuses: Draft, Proposed, Accepted, Deprecated, Superseded. Document versions are independent of product versions. Never reuse retired IDs.
 
 ## GOV-002: Definition of Ready

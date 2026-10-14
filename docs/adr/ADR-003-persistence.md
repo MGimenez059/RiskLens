@@ -2,7 +2,9 @@
 
 Status: Proposed
 Version: 1.0
-Last Updated: 2026-10-07
+Last Updated: 2026-10-14
+Applicability: M02 core; later variants gated
+Acceptance Readiness: Prepared for explicit human acceptance against the corrected reviewed commit; not accepted now.
 
 - ID: ADR-003
 - Date: 2026-10-07
@@ -15,7 +17,7 @@ Last Updated: 2026-10-07
 Runs, review decisions and recovery must survive process restart. The proposed deployment is one local analyst.
 
 ## Decision
-Propose SQLite for run/review/event metadata and content-addressed local files for immutable input/output artifacts. Use parameterized SQL, foreign keys, transactions, unique idempotency keys and optimistic revisions. Checkpointer storage remains a separate adapter. Confirm retention and local operating limits under OQ-009/010 before implementation.
+Propose SQLite for run/review/event metadata and content-addressed local files for immutable input/output artifacts. Use parameterized SQL, foreign keys, transactions, unique idempotency keys and optimistic revisions. Checkpointer storage remains a separate adapter. Owner-selected platform and M02 retention are recorded. M02 publication/recovery and whole-state cleanup are CT-018; configurable safety proposal is CT-020. Checkpoint/review/later deletion questions remain open. No M02 graph adapter is required.
 
 ## Alternatives
 Memory-only storage cannot satisfy restart recovery. PostgreSQL provides stronger multi-user operating options but adds an unnecessary service for current scope. File-only metadata complicates transactional review updates.
