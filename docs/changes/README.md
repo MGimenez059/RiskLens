@@ -1,8 +1,10 @@
 # Change requests
 
-Status: Proposed
+Status: Accepted
 Version: 1.0
-Last Updated: 2026-10-07
+Last Updated: 2026-10-15
+
+Acceptance: [BASELINE-ACCEPTANCE-001](BASELINE-ACCEPTANCE-001.md), owner approval 2026-10-15, reviewed commit archived baseline review revision. Only the document/section scope recorded there is accepted; later feature gates remain in force.
 
 Approved behavioral changes follow this sequence: CR, current behavior, proposed behavior, motivation, impact analysis, affected requirements, ADRs, contracts and tests/evals, specification update, implementation, traceability update, CHANGELOG and validation.
 

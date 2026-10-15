@@ -1,8 +1,10 @@
 # Writing policy
 
-Status: Proposed
+Status: Accepted
 Version: 1.0
-Last Updated: 2026-10-07
+Last Updated: 2026-10-15
+
+Acceptance: [BASELINE-ACCEPTANCE-001](../changes/BASELINE-ACCEPTANCE-001.md), owner approval 2026-10-15, reviewed commit archived baseline review revision. Only the document/section scope recorded there is accepted; later feature gates remain in force.
 
 ## STYLE-001: Language and notation
 Use English for documentation, code identifiers, comments, commits, PR descriptions, UI copy and prompts. Use technical, specific wording. Define domain terms before relying on them. Preserve exact external identifiers and necessary quotations with attribution.

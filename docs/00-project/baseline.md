@@ -1,10 +1,12 @@
 # RiskLens Specification Baseline v1.0
 
-Status: Proposed
+Status: Accepted
 Version: 1.0
 Last Updated: 2026-10-15
 
-This baseline specifies the proposed v1 product. Product functionality is NOT IMPLEMENTED. Initial executable code is limited to repository verification and development tooling.
+Acceptance: [BASELINE-ACCEPTANCE-001](../changes/BASELINE-ACCEPTANCE-001.md), owner approval 2026-10-15, reviewed commit archived baseline review revision. Only the document/section scope recorded there is accepted; later feature gates remain in force.
+
+The Product Owner accepted the specified v1 direction and M02 subsets with explicit deferrals under BASELINE-ACCEPTANCE-001. Product functionality is NOT IMPLEMENTED. Initial executable code is limited to repository verification and development tooling.
 
 ## Canonical reading order
 1. [Principles and precedence](principles.md), [writing policy](writing-policy.md).
@@ -19,8 +21,8 @@ This baseline specifies the proposed v1 product. Product functionality is NOT IM
 Initial status is Proposed. The user is the product owner. An agent cannot approve this baseline.
 An acceptance record in `docs/changes/` must identify the reviewed commit, baseline version, reviewer, date, accepted documents, individually accepted ADRs, exceptions, and deferred decisions with their implementation gates. Update document statuses explicitly after approval. Proposed documents alone never authorize product implementation.
 The owner may accept the architecture direction while deferring decisions that do not block the next slice. Undefined financial semantics cannot be accepted as implementation-ready behavior.
-Owner instructions authorize corrections and preparation of a final Proposed review target and acceptance record. They do not approve the resulting commit or automatically accept ADRs. A prepared record in Draft/Proposed state with Approval State Awaiting Owner Approval does not satisfy human acceptance. Formal approval must identify the immutable commit and exact scope; no owner acceptance has been recorded yet.
-Mixed-stage containers stay Proposed. Each normative requirement/rule/contract has Status and Applicability. A future acceptance record enumerates accepted IDs and variants; unresolved later variants remain Proposed. Reject blanket acceptance of a mixed container while it contains Proposed or deferred sections.
+Owner approval on 2026-10-15 explicitly identifies reviewed commit archived baseline review revision and the exact document/ID/variant scope in BASELINE-ACCEPTANCE-001. That record now records ACCEPT WITH EXPLICIT DEFERRALS. A prepared Draft/Proposed record alone never satisfies human acceptance. This approval does not authorize M02 implementation or accept deferred M03/M04 details.
+Mixed-stage containers stay Proposed. Each normative requirement/rule/contract has Status and Applicability. The acceptance record enumerates accepted IDs and variants; unresolved later variants remain Proposed. Reject blanket acceptance of a mixed container while it contains Proposed or deferred sections.
 Changes to Proposed documents are recorded in CHANGELOG. After acceptance, use the CR process. Allowed statuses: Draft, Proposed, Accepted, Deprecated, Superseded. Document versions are independent of product versions. Never reuse retired IDs.
 
 ## GOV-002: Definition of Ready

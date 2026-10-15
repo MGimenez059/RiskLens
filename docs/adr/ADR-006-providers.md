@@ -1,17 +1,21 @@
 # ADR-006: Provider abstraction
 
-Status: Proposed
+Status: Accepted
 Version: 1.0
-Last Updated: 2026-10-14
+Last Updated: 2026-10-15
 Applicability: M03 deferral / future adapter
-Acceptance Readiness: Prepared for explicit human acceptance against the corrected reviewed commit; not accepted now.
+Acceptance Record: [BASELINE-ACCEPTANCE-001](../changes/BASELINE-ACCEPTANCE-001.md)
+Acceptance Date: 2026-10-15
+Accepted By: Product Owner, human user in this conversation
+Reviewed Commit: archived baseline review revision
+Acceptance Scope: Individual direction/deferral decision only; later contracts and feature gates remain as recorded.
 
 - ID: ADR-006
 - Date: 2026-10-07
 - Related requirements: FR-AI-001/002, NFR-AI-002, NFR-MNT-001
 - Supersedes: None
 - Superseded by: None
-- Decision owner: Product owner; acceptance pending.
+- Decision owner: Product Owner; explicit acceptance recorded 2026-10-15.
 
 ## Context
 Model availability and output behavior can change. Tests must run without provider credentials.

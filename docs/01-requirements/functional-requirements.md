@@ -2,12 +2,15 @@
 
 Status: Proposed
 Version: 1.0
-Last Updated: 2026-10-14
+Last Updated: 2026-10-15
 
-All records are Proposed active-v1 requirements with explicit Applicability. P1 means required at its listed milestone, not a prerequisite for earlier slices. No excluded finance feature is required for release. Description is the Behavior field below. Acceptance criteria are canonical in acceptance-criteria.md.
+Acceptance: [BASELINE-ACCEPTANCE-001](../changes/BASELINE-ACCEPTANCE-001.md), owner approval 2026-10-15, reviewed commit archived baseline review revision. This mixed-stage container remains Proposed; only the annotated IDs/variants are Accepted.
+
+Per-ID status and accepted scope below record the owner-approved M02 variants; all other active-v1 variants remain Proposed with explicit Applicability. P1 means required at its listed milestone, not a prerequisite for earlier slices. No excluded finance feature is required for release. Description is the Behavior field below. Acceptance criteria are canonical in acceptance-criteria.md.
 
 ## FR-DQ-001: Import immutable synthetic snapshots
-- Status: Proposed
+- Status: Accepted
+- Acceptance: BASELINE-ACCEPTANCE-001, 2026-10-15; reviewed M02 scope only.
 - Priority: P1
 - Applicability: M02
 - Rationale: Prevent ambiguous input provenance.
@@ -19,7 +22,8 @@ All records are Proposed active-v1 requirements with explicit Applicability. P1 
 - Acceptance criteria: AC-DQ-001
 
 ## FR-DQ-002: Report data quality defects
-- Status: Proposed
+- Status: Accepted
+- Acceptance: BASELINE-ACCEPTANCE-001, 2026-10-15; reviewed M02 scope only.
 - Priority: P1
 - Applicability: M02
 - Rationale: Make invalid data actionable without misleading metrics.
@@ -31,7 +35,8 @@ All records are Proposed active-v1 requirements with explicit Applicability. P1 
 - Acceptance criteria: AC-DQ-002
 
 ## FR-RISK-001: Compute deterministic portfolio metrics
-- Status: Proposed
+- Status: Accepted
+- Acceptance: BASELINE-ACCEPTANCE-001, 2026-10-15; reviewed M02 scope only.
 - Priority: P1
 - Applicability: M02
 - Rationale: Provide authoritative values independent of AI.
@@ -127,7 +132,8 @@ All records are Proposed active-v1 requirements with explicit Applicability. P1 
 - Acceptance criteria: AC-AI-003
 
 ## FR-UI-001: Display analysis status and deterministic results
-- Status: Proposed
+- Status: Accepted
+- Acceptance: BASELINE-ACCEPTANCE-001, 2026-10-15; reviewed M02 scope only.
 - Priority: P1
 - Applicability: M02
 - Rationale: Provide a usable first slice without AI dependency.
@@ -152,6 +158,10 @@ All records are Proposed active-v1 requirements with explicit Applicability. P1 
 
 ## FR-OBS-001: Trace analysis runs and model costs
 - Status: Proposed
+- Accepted Scope: M02 hashes, versions, typed events and run outcomes only; BASELINE-ACCEPTANCE-001, 2026-10-15.
+- M02 Status: Accepted
+- Later Status: Proposed
+- Deferred Scope: Later variants remain Proposed under their existing gates.
 - Priority: P1
 - Applicability: M02
 - Rationale: Enable reproducibility and audit.
@@ -175,7 +185,8 @@ All records are Proposed active-v1 requirements with explicit Applicability. P1 
 - Acceptance criteria: AC-OBS-002
 
 ## FR-DQ-003: Bound import resources and diagnostic collection
-- Status: Proposed
+- Status: Accepted
+- Acceptance: BASELINE-ACCEPTANCE-001, 2026-10-15; reviewed M02 scope only.
 - Applicability: M02
 - Priority: P1
 - Rationale / purpose: prevent unbounded local parsing without changing the population being analyzed.
@@ -189,7 +200,8 @@ All records are Proposed active-v1 requirements with explicit Applicability. P1 
 - Traceability: BR-DQ-004; CT-015/016/019/020; ADR-002/003; planned test_FR_DQ_003_parser_limits; EVAL-DQ-003.
 
 ## FR-OBS-003: Publish local results and replay safely after restart
-- Status: Proposed
+- Status: Accepted
+- Acceptance: BASELINE-ACCEPTANCE-001, 2026-10-15; reviewed M02 scope only.
 - Applicability: M02
 - Priority: P1
 - Rationale / purpose: make deterministic runs durable without graph checkpoints.

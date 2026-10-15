@@ -2,7 +2,9 @@
 
 Status: Proposed
 Version: 1.0
-Last Updated: 2026-10-14
+Last Updated: 2026-10-15
+
+Acceptance: [BASELINE-ACCEPTANCE-001](../changes/BASELINE-ACCEPTANCE-001.md), owner approval 2026-10-15, reviewed commit archived baseline review revision. Accepted: UC-001 M02 path only. Proposed: UC-002, UC-003, UC-004 and UC-005. Container remains Proposed.
 
 | ID | Actor and trigger | Main path | Alternative / failure | Requirements |
 |---|---|---|---|---|

@@ -2,24 +2,29 @@
 
 Status: Proposed
 Version: 1.0
-Last Updated: 2026-10-14
+Last Updated: 2026-10-15
 
-These criteria are proposed binary gates, not claims of execution.
+Acceptance: [BASELINE-ACCEPTANCE-001](../changes/BASELINE-ACCEPTANCE-001.md), owner approval 2026-10-15, reviewed commit archived baseline review revision. This mixed-stage container remains Proposed; only the annotated IDs/variants are Accepted.
+
+Per-ID status records accepted M02 binary gates and retained Proposed later variants. Acceptance is not a claim of execution.
 
 ## AC-DQ-001: FR-DQ-001
-Status: Proposed
+Status: Accepted
+Acceptance: BASELINE-ACCEPTANCE-001, 2026-10-15; reviewed M02 scope only.
 Applicability: M02
 
 A valid USD synthetic bundle produces the globally unique snapshot with exactly one portfolio owner and verified byte/semantic hashes. Repeating the import key and full bundle/parser fingerprint returns the existing semantic outcome. Repeating the analysis key/config returns the same run; different content/config under a bound key returns conflict. Global snapshot_id reuse by a different portfolio conflicts. Schema/header ambiguity, duplicate JSON keys, malformed values or invalid core invariants reject the complete snapshot; no filtering or deduplication.
 
 ## AC-DQ-002: FR-DQ-002
-Status: Proposed
+Status: Accepted
+Acceptance: BASELINE-ACCEPTANCE-001, 2026-10-15; reviewed M02 scope only.
 Applicability: M02
 
 Missing core fields, duplicate loan IDs, invalid optional non-null segment, negative monetary/DPD values, future origination date, invalid closed-loan invariant, unsupported USD currency or source hash mismatch yield cataloged blocking diagnostics and no metrics. Null segment is accepted with an unspecified group and no invented finding. Header-only valid CSV is a valid empty snapshot. Unreadable manifest yields application-assigned result/report identities. Diagnostic collection states whether the report is complete.
 
 ## AC-RISK-001: FR-RISK-001
-Status: Proposed
+Status: Accepted
+Acceptance: BASELINE-ACCEPTANCE-001, 2026-10-15; reviewed M02 scope only.
 Applicability: M02
 
 For two open loans with principal 100.00/300.00 and DPD 0/5: total exposure 400.00, count operands 1/2 with value 0.5000, exposure operands 300.00/400.00 with value 0.7500. These are hand-checkable fixtures, not risk thresholds.
@@ -70,7 +75,8 @@ Applicability: M04
 In M04 only, high-impact recommendations remain pending across restart and cannot be emitted as approved by a model. Valid local human action against current revision records decision/rationale once; stale or contradictory replay conflicts. Metrics remain unchanged. Policy conflicts remain indeterminate and are corrected outside the run, not approved through recommendation review.
 
 ## AC-UI-001: FR-UI-001
-Status: Proposed
+Status: Accepted
+Acceptance: BASELINE-ACCEPTANCE-001, 2026-10-15; reviewed M02 scope only.
 Applicability: M02
 
 M02 dashboard displays valid/rejected/conflict/limit import outcomes plus created/running/succeeded/failed analysis states. A valid empty snapshot appears as an empty population, not a separate run status. Show USD/as_of, counts, exposure, raw groups, exact numerator/denominator, quantized display and unavailable reasons from stored data. No model, policy, pending_review, high-impact recommendation or graph checkpoint is needed for this criterion. Later partial/review UI is tested at M03/M04.
@@ -83,6 +89,10 @@ Following every displayed supported claim resolves evidence from that run. Pendi
 
 ## AC-OBS-001: FR-OBS-001
 Status: Proposed
+Accepted Scope: M02 manifest, hashes, ownership, versions, limits, events and no-provider variant only; BASELINE-ACCEPTANCE-001, 2026-10-15.
+M02 Status: Accepted
+Later Status: Proposed
+Deferred Scope: Later variants remain Proposed under their existing gates.
 Applicability: M02 core; M03+ applicable AI fields
 
 M02 manifest links input bundle/CSV hashes when complete, global snapshot/portfolio ownership, parser/config/arithmetic/rule/contracts/code versions and CT-019 events. Source/report links resolve within the run. Effective limits and stage selections are recorded; model/prompt/index/usage fields are absent in M02 mode. Persistence failure prevents a durable success claim and emits safe error without payload/secrets. Later actual AI usage remains unknown when unreported, never fabricated zero.
@@ -94,13 +104,15 @@ Applicability: M03 graph; M04 review
 For enabled M03 graph nodes, crash before and after committed outputs/checkpoints and resume without duplicate durable results. Unsupported checkpoint version, stale revision and concurrent resume fail safely. Provider calls may repeat after ambiguous failure, but duplicate output commits are forbidden. Review interruption/decision replay is tested only in the M04 variant; it does not gate M03 or M02.
 
 ## AC-DQ-003: FR-DQ-003
-Status: Proposed
+Status: Accepted
+Acceptance: BASELINE-ACCEPTANCE-001, 2026-10-15; reviewed M02 scope only.
 Applicability: M02
 
 At every effective CT-020 byte/row/field/numeric bound accept otherwise valid input at the bound and return resource_limit/limit_failed at bound+1. Count UTF-8 field bytes and exclude header from row count. Do not truncate data or produce metrics from scanned rows. At diagnostic cap after invalid records, return rejected/report_complete=false; a full scan with fewer findings reports true. Early unreadable/limit input may lack a complete hash, but never claims a truncated hash as full. Reject invalid/nonpositive configuration. Output monetary sums may exceed one input token's length without being truncated.
 
 ## AC-OBS-003: FR-OBS-003
-Status: Proposed
+Status: Accepted
+Acceptance: BASELINE-ACCEPTANCE-001, 2026-10-15; reviewed M02 scope only.
 Applicability: M02
 
 Inject interruption before artifact publish, after publish/before metadata transaction, and after commit/before UI response. Restart exposes only verified committed records; orphans are ignored; identical analysis replay returns the existing run without duplicate snapshot/result. Reusing global snapshot_id with a different owner/content conflicts. Missing/corrupt referenced file returns integrity_error without overwriting the prior result. No graph checkpoint is involved. Explicit stopped-application cleanup of the entire confined state root removes metadata/artifacts together; subsequent restart is empty. No automatic expiry or per-run deletion UI is required.

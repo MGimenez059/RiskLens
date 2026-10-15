@@ -8,12 +8,12 @@ Last Updated: 2026-10-15
 - Owner: Product owner.
 - Technical reviewer: Current architecture review agent.
 - Date: 2026-10-14
-- Current baseline: Corrected Proposed v1.0; baseline acceptance pending.
+- Current baseline: v1.0 accepted with explicit deferrals under BASELINE-ACCEPTANCE-001. This correction record retains its historical Proposed status; it is not blanket approval of future behavior.
 - Pre-correction source commit: archived initial proposal revision.
 - Initial corrected review target: archived corrected proposal revision, preserved historical Proposed revision.
 - Final reviewed target: archived baseline review revision, verified Proposed; details in baseline-review-target.md.
-- Prepared acceptance record: BASELINE-ACCEPTANCE-001.md, Approval State Awaiting Owner Approval; actual accepted sets empty.
-- Decision: Owner correction decisions recorded in owner-decisions-2026-10-14.md; exact corrected baseline and ADR acceptance pending GOV-001.
+- Acceptance record: BASELINE-ACCEPTANCE-001.md, Accepted; explicit owner approval received 2026-10-15 for exact reviewed subsets.
+- Decision: Historical correction authorization remains in owner-decisions-2026-10-14.md. Current subset/individual ADR acceptance is recorded separately under GOV-001 in BASELINE-ACCEPTANCE-001.
 
 ## Pre-correction behavior
 The baseline retains Default as a possible v1 release blocker, requires an unavailable default metric stub, leaves ratio precision unresolved, mixes later review states into M02 UI acceptance, and permits M03 recommendations before M04 human review. Other identity, validation-result and persistence contracts need clarification.
@@ -21,7 +21,7 @@ The baseline retains Default as a possible v1 release blocker, requires an unava
 ## Proposed behavior and motivation
 Use the findings and exact source IDs in the [Baseline Acceptance Review](../00-project/baseline-acceptance-review.md). The proposal limits M02 to deterministic local analytics and preserves complete-population calculation. Default is deferred beyond current v1 with no invented definition. Raw concentration shares are separate from detector thresholds. M03 synthesis is restricted to observations and investigation suggestions until M04 business-action review is available.
 
-The owner authorized correction of the Proposed canonical specifications. USD/exposure/global identity/platform/retention decisions are recorded and applied. CT-015 through CT-020 and FR-DQ-003/FR-OBS-003 supply the missing M02 contracts and verification boundaries. Exact provisional safety values await review of the final commit; empirical performance and AI budgets remain separately open. Later graph, policy and copilot details stay Proposed behind feature-readiness gates. See the [final closure report](../00-project/baseline-closure-report.md) and [prepared record](BASELINE-ACCEPTANCE-001.md). The baseline-correction-report.md and earlier acceptance review retain prior correction/review evidence.
+The owner authorized correction of the Proposed canonical specifications. USD/exposure/global identity/platform/retention decisions are recorded and applied. CT-015 through CT-020 and FR-DQ-003/FR-OBS-003 supply the missing M02 contracts and verification boundaries. Exact provisional local-development safety values were approved on 2026-10-15 under BASELINE-ACCEPTANCE-001; empirical performance and AI budgets remain separately open. Later graph, policy and copilot details stay Proposed behind feature-readiness gates. See the [final closure report](../00-project/baseline-closure-report.md) and [acceptance record](BASELINE-ACCEPTANCE-001.md). The baseline-correction-report.md and earlier acceptance review retain prior correction/review evidence.
 
 ## Impact analysis
 
@@ -39,10 +39,10 @@ The owner authorized correction of the Proposed canonical specifications. USD/ex
 
 ## Approval and execution evidence
 - [x] Owner correction decisions recorded; corrected Proposed specifications prepared.
-- [x] Corrected Proposed revision committed and identified; human review/acceptance of that exact target remains pending.
-- [ ] Human approval recorded with reviewer/date/commit and deferred gates.
+- [x] Corrected Proposed revision committed and identified; final exact target subsequently accepted for the recorded subsets.
+- [x] Human approval recorded with Product Owner identity/date/reviewed commit and deferred gates in BASELINE-ACCEPTANCE-001.
 - [x] Canonical Proposed specifications corrected without product implementation.
-- [ ] Accepted ADRs and per-ID statuses updated explicitly.
+- [x] Eight individual ADRs and only approved per-ID/clause/variant statuses updated explicitly; mixed-stage headers remain Proposed.
 - [x] Requirement/contract traceability updated; product tests remain planned.
 - [x] CHANGELOG records the applied specification revisions.
 - [x] Prior correction verification retained in baseline-correction-report.md; final closure verification recorded in baseline-closure-report.md.
@@ -50,7 +50,7 @@ The owner authorized correction of the Proposed canonical specifications. USD/ex
 - [x] Final closure verifies REVIEW-001 through REVIEW-006, REVIEW-007 scope, REVIEW-015 and REVIEW-016 without product implementation.
 - [x] Final specification review target committed; prepared record pins its exact SHA and proposed per-ID/variant scope.
 - [x] Post-target metadata verification passed: 63 Markdown documents and 15 governance tests; reviewed normative paths unchanged.
-- [ ] Owner acceptance of the final target and exact subsets received; no approval inferred from preparation.
+- [x] Owner acceptance of the final target and exact subsets received explicitly on 2026-10-15; no approval inferred from preparation.
 - [ ] Later applicable product tests/evals implemented and executed in their features.
 
 This CR proposes specification changes only. It does not authorize the first vertical slice or require implementing product functionality during this review.

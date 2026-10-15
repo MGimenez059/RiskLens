@@ -4,6 +4,13 @@ Status: Proposed
 Version: 1.0
 Last Updated: 2026-10-15
 
+## 2026-10-15: Record owner acceptance with explicit deferrals
+- Recorded the Product Owner's explicit approval of reviewed commit archived baseline review revision and the prepared BASELINE-ACCEPTANCE-001 scope.
+- Marked only approved documents, M02 IDs/clauses/variants and ADR-002 through ADR-009 Accepted; retained mixed-stage headers, ADR-001 and later details Proposed.
+- Closed OQ-008 M02 safety configuration using the unchanged six local-development bounds; measured performance and AI budgets remain open.
+- Updated acceptance state, question/ADR registries and traceability without changing normative product behavior.
+- No M02 feature file, product implementation, dependency change, push or publication.
+
 ## 2026-10-15: Final baseline closure for owner acceptance
 - Rechecked the previously identified correction findings, M02 boundary and later deferral gates without redesign or scope changes.
 - Aligned M02 observability field names with CT-019 and artifact verification references with AC-OBS-003.

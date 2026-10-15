@@ -1,17 +1,21 @@
 # ADR-008: Modular repository architecture
 
-Status: Proposed
+Status: Accepted
 Version: 1.0
-Last Updated: 2026-10-14
+Last Updated: 2026-10-15
 Applicability: M02 core; later variants gated
-Acceptance Readiness: Prepared for explicit human acceptance against the corrected reviewed commit; not accepted now.
+Acceptance Record: [BASELINE-ACCEPTANCE-001](../changes/BASELINE-ACCEPTANCE-001.md)
+Acceptance Date: 2026-10-15
+Accepted By: Product Owner, human user in this conversation
+Reviewed Commit: archived baseline review revision
+Acceptance Scope: Individual direction/deferral decision only; later contracts and feature gates remain as recorded.
 
 - ID: ADR-008
 - Date: 2026-10-07
 - Related requirements: NFR-MNT-001, NFR-REL-002, FR-RISK-001
 - Supersedes: None
 - Superseded by: None
-- Decision owner: Product owner; acceptance pending.
+- Decision owner: Product Owner; explicit acceptance recorded 2026-10-15.
 
 ## Context
 The project must preserve domain rules and decisions across AI-assisted work without creating unused abstractions.

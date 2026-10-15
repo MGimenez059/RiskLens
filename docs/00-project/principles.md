@@ -1,8 +1,10 @@
 # Project principles and precedence
 
-Status: Proposed
+Status: Accepted
 Version: 1.0
-Last Updated: 2026-10-07
+Last Updated: 2026-10-15
+
+Acceptance: [BASELINE-ACCEPTANCE-001](../changes/BASELINE-ACCEPTANCE-001.md), owner approval 2026-10-15, reviewed commit archived baseline review revision. Only the document/section scope recorded there is accepted; later feature gates remain in force.
 
 - **P-001**: Financial calculations must be deterministic and versioned.
 - **P-002**: An LLM must never be the authoritative source of a numeric metric.
@@ -37,4 +39,4 @@ Last Updated: 2026-10-07
 8. Implementation.
 9. README and explanatory documentation.
 
-This is the canonical precedence definition. All initial baseline documents are proposals to review together; precedence does not approve a proposal. On conflict, identify document paths and IDs, report SPEC CONFLICT, suspend dependent work, and propose a CR. Even when a higher source prevails, correct the lower source with traceability. Conversations and external documentation inform changes but do not replace versioned decisions. Record new owner instructions affecting product behavior before implementation.
+This is the canonical precedence definition. The initial proposal was reviewed together; current acceptance is limited to BASELINE-ACCEPTANCE-001. Precedence does not approve a proposal. On conflict, identify document paths and IDs, report SPEC CONFLICT, suspend dependent work, and propose a CR. Even when a higher source prevails, correct the lower source with traceability. Conversations and external documentation inform changes but do not replace versioned decisions. Record new owner instructions affecting product behavior before implementation.

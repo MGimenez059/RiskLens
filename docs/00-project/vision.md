@@ -1,8 +1,10 @@
 # Product vision
 
-Status: Proposed
+Status: Accepted
 Version: 1.0
-Last Updated: 2026-10-07
+Last Updated: 2026-10-15
+
+Acceptance: [BASELINE-ACCEPTANCE-001](../changes/BASELINE-ACCEPTANCE-001.md), owner approval 2026-10-15, reviewed commit archived baseline review revision. Only the document/section scope recorded there is accepted; later feature gates remain in force.
 
 **RiskLens: AI-powered Credit Risk Intelligence Platform**.
 RiskLens serves credit risk analysts and Data teams that need to inspect loan portfolios, detect data defects, and explain findings against internal policies. The problem is fragmented calculations, evidence, and interpretation. The proposed product links all three within a traceable analysis run.

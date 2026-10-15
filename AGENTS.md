@@ -1,10 +1,12 @@
 # RiskLens agent instructions
 
-Status: Proposed
+Status: Accepted
 Version: 1.0
-Last Updated: 2026-10-14
+Last Updated: 2026-10-15
 
-Read this file before working. Acceptance status and current implementation gate: [baseline](docs/00-project/baseline.md). Current authorization covers corrected specifications, governance tests and review-target commits only. Owner correction decisions are in docs/changes/owner-decisions-2026-10-14.md; they do not formally accept the resulting baseline. Read docs/00-project/baseline-correction-report.md for the current recommendation and remaining gates. Product implementation requires GOV-001.
+Acceptance: [BASELINE-ACCEPTANCE-001](docs/changes/BASELINE-ACCEPTANCE-001.md), owner approval 2026-10-15, reviewed commit archived baseline review revision. Only the document/section scope recorded there is accepted; later feature gates remain in force.
+
+Read this file before working. Acceptance status and implementation gates: [baseline](docs/00-project/baseline.md). The Product Owner accepted the exact reviewed baseline subsets with explicit deferrals in [BASELINE-ACCEPTANCE-001](docs/changes/BASELINE-ACCEPTANCE-001.md) on 2026-10-15. M02 feature preparation and implementation require a separate authorized task and GOV-002. Historical correction decisions remain in docs/changes/owner-decisions-2026-10-14.md; the acceptance record is the current approval authority.
 
 ## Before changes
 1. Read [principles](docs/00-project/principles.md), the canonical precedence source, and [writing policy](docs/00-project/writing-policy.md).

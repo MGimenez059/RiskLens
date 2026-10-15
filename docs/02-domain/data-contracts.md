@@ -2,10 +2,12 @@
 
 Status: Proposed
 Version: 1.0
-Last Updated: 2026-10-14
+Last Updated: 2026-10-15
+
+Acceptance: [BASELINE-ACCEPTANCE-001](../changes/BASELINE-ACCEPTANCE-001.md), owner approval 2026-10-15, reviewed commit archived baseline review revision. This mixed-stage container remains Proposed; only the annotated IDs/variants are Accepted.
 
 ## Contract conventions
-Written specifications only; no Pydantic product models exist. Contract version is 1.0. Each ID/variant has its own Status and Applicability; this mixed-stage document remains Proposed. Owner decisions in CR-001 authorize corrections, not baseline acceptance.
+Written specifications only; no Pydantic product models exist. Contract version is 1.0. Each ID/variant has its own Status and Applicability; this mixed-stage document remains Proposed. CR-001 correction authorization is historical; BASELINE-ACCEPTANCE-001 records current owner acceptance of the listed M02 subsets.
 Required fields may not be omitted. `?` permits null; other fields are non-null. CSV empty cell means null only for nullable segment. Unknown fields, duplicate JSON keys, missing/duplicate/extra headers and invalid non-null optional values reject ingress. Reject ambiguous encoding/records; no implicit trimming, coercion, imputation or deduplication.
 
 | Type | Representation and constraints | Failure |
@@ -24,7 +26,8 @@ Required fields may not be omitted. `?` permits null; other fields are non-null.
 All monetary/ratio arithmetic and hashes follow CT-017. Contract defects reject the entire population; identity collisions are conflict; safety-bound violations are limit_failed under CT-015/019. Later generated-output defects discard candidates without changing metrics. Arrays can be empty unless explicitly nonempty. No arbitrary monetary/risk threshold is implied by parser limits.
 
 ## CT-001: PortfolioSnapshot and import manifest
-Status: Proposed
+Status: Accepted
+Acceptance: BASELINE-ACCEPTANCE-001, 2026-10-15; reviewed M02 scope only.
 Applicability: M02
 
 | Field | Type / nullable | Meaning and constraints |
@@ -45,7 +48,8 @@ Import request carries import_idempotency_key: Id and parser_config_version: Ver
 Invariants/failures: strict complete population, CT-002, CT-019 and CT-020. No valid snapshot is published for rejected/conflict/limit results. Traceability: FR-DQ-001/002/003, AC-DQ-001/002/003, BR-DQ-001/002/004.
 
 ## CT-002: Loan observation
-Status: Proposed
+Status: Accepted
+Acceptance: BASELINE-ACCEPTANCE-001, 2026-10-15; reviewed M02 scope only.
 Applicability: M02
 
 | Field | Type / nullable | Meaning, unit and constraints |
@@ -64,6 +68,10 @@ Traceability: FR-DQ-001/002, FR-RISK-001, AC-DQ-001/002, AC-RISK-001, BR-DQ-002/
 
 ## CT-003: EvidenceRef
 Status: Proposed
+Accepted Scope: Common fields and M02 snapshot/source_row/metric/validation_report kinds and locators only; BASELINE-ACCEPTANCE-001, 2026-10-15.
+M02 Status: Accepted
+Later Status: Proposed
+Deferred Scope: Later variants remain Proposed under their existing gates.
 Applicability: M02 core; M03/M04 extensions Proposed
 
 Required: evidence_id Id, run_id Id, kind enum, artifact_hash Hash, locator tagged object. M02 kind is snapshot, source_row, metric or validation_report. Locators: snapshot(snapshot_id Id); source_row(snapshot_id Id, row_number integer >= 2, field Id?); metric(metrics_id Id, metric_key Text); validation_report(report_id Id). snapshot_id is globally unique and resolved with immutable portfolio ownership. Every ref belongs to the run and verifies artifact_hash. No paths/URLs or cycles.
@@ -72,7 +80,8 @@ Proposed later kinds: comparison(comparison_id Id), policy_chunk(chunk_id Id, po
 Traceability: FR-DQ-002, FR-RISK-001, FR-OBS-001/003; CT-015/018/019; later FR-POL-001/002 and FR-AI-002.
 
 ## CT-004: PortfolioMetrics
-Status: Proposed
+Status: Accepted
+Acceptance: BASELINE-ACCEPTANCE-001, 2026-10-15; reviewed M02 scope only.
 Applicability: M02
 
 | Field | Type / nullable | Meaning |
@@ -92,12 +101,17 @@ Traceability: FR-RISK-001, AC-RISK-001, BR-RISK-001/002/003/005, CT-017.
 
 ## Shared finding envelope for CT-005/006/007
 Status: Proposed
+Accepted Scope: CT-005 DQ application only; BASELINE-ACCEPTANCE-001, 2026-10-15.
+M02 Status: Accepted
+Later Status: Proposed
+Deferred Scope: CT-006/007 analytical applications remain Proposed.
 Applicability: M02 DQ; M03 analytical extensions Proposed
 
 finding_id Id, run_id Id, rule_id Id, rule_version Version, severity enum(info,warning,error), summary sanitized Text, evidence_ids RefList; all required. Severity and blocking behavior come from CT-019 for M02, from approved detector/policy configuration later. No LLM-selected numeric authority or severity.
 
 ## CT-005: DataQualityFinding
-Status: Proposed
+Status: Accepted
+Acceptance: BASELINE-ACCEPTANCE-001, 2026-10-15; reviewed M02 scope only.
 Applicability: M02
 
 Required: shared envelope, scope enum(file,row,field), row_number integer >= 2? (null for file), field Id? (required for field scope), code from CT-019 validation catalog, blocking boolean. M02 actual findings are blocking errors for invalid input. No finding is emitted for valid null segment, valid empty population or denominator unavailability. Identity conflicts and safety failures are typed operation outcomes, not fabricated DQ loan findings.
@@ -155,6 +169,10 @@ PolicyChunk: `chunk_id`, `policy_id` Id; `policy_version` Version; `normalized_h
 
 ## CT-011: AnalysisRun manifest
 Status: Proposed
+Accepted Scope: M02 manifest, StageOutcome and RunError only; BASELINE-ACCEPTANCE-001, 2026-10-15.
+M02 Status: Accepted
+Later Status: Proposed
+Deferred Scope: Later variants remain Proposed under their existing gates.
 Applicability: M02 core; M03/M04 extensions Proposed
 
 M02 fields: run_id Id; parent_run_id Id?; import_id Id; snapshot_id Id?; revision Count; status from domain-model.md M02 lifecycle; created_at Timestamp; completed_at Timestamp?; input_hash Hash?; canonical_input_hash Hash?; config_hash Hash; baseline_version, contract_version, rule_version, code_revision Version; requested_stages from CT-016; stage_outcomes list[StageOutcome]; output_artifact_ids list[Id]; errors list[RunError]. All non-null unless marked. snapshot_id/canonical_input_hash are required for valid metrics and absent for rejected/conflict/limit attempts. input_hash null is permitted only where complete bytes are unavailable (unreadable/early limit); record the exact reason in CT-015. completed_at is null for created/running and required for terminal M02 states.
@@ -180,7 +198,8 @@ Applicability: M03; temporal semantics remain OPEN
 Rate kind, prior selection, cohort policy and immutable comparison-input lineage remain OQ-005. Different count/exposure semantics cannot be selected implicitly from these generic fields.
 
 ## CT-015: Import and Validation Result
-Status: Proposed
+Status: Accepted
+Acceptance: BASELINE-ACCEPTANCE-001, 2026-10-15; reviewed M02 scope only.
 Applicability: M02
 
 Purpose: represent validation and operation outcomes without inventing a valid snapshot or calculating a filtered population.
@@ -204,7 +223,8 @@ Failure behavior: schema-invalid result cannot be persisted as successful valida
 Traceability: FR-DQ-001/002/003, FR-OBS-003; BR-DQ-001/002/003/004; CT-001/005/018/019/020; ADR-002/003.
 
 ## CT-016: Analysis Request and Analysis Configuration
-Status: Proposed
+Status: Accepted
+Acceptance: BASELINE-ACCEPTANCE-001, 2026-10-15; reviewed M02 scope only.
 Applicability: M02; later modes require reviewed contract extension
 
 Purpose: make stage selection, configuration and replay explicit without requiring any AI runtime.
@@ -225,7 +245,8 @@ Failure behavior: invalid mode/stage/version/config returns configuration_invali
 Traceability: FR-DQ-001, FR-OBS-001/003, FR-RISK-001; CT-015/017/018/020; ADR-003/008.
 
 ## CT-017: Arithmetic Serialization and Canonical Hashing
-Status: Proposed
+Status: Accepted
+Acceptance: BASELINE-ACCEPTANCE-001, 2026-10-15; reviewed M02 scope only.
 Applicability: M02; same arithmetic authority for later ratios
 
 Purpose: specify exact financial operands and reproducible representations without implementing calculators.
@@ -248,7 +269,8 @@ Failure behavior: noncanonical encoding, inconsistent operands/value or integrit
 Traceability: FR-RISK-001, FR-OBS-001/003; BR-RISK-001/002/003/005; NFR-REL-002; CT-004/016/018; ADR-008.
 
 ## CT-018: Local Artifact Publication and Recovery
-Status: Proposed
+Status: Accepted
+Acceptance: BASELINE-ACCEPTANCE-001, 2026-10-15; reviewed M02 scope only.
 Applicability: M02; graph checkpoint adapter remains Proposed under OQ-009
 
 Purpose: publish immutable artifacts and metadata safely in one local writer process, independently of graph orchestration.
@@ -270,7 +292,8 @@ Retention: no automatic expiry. Supported M02 cleanup is explicit removal of the
 Failure behavior: staged-file error, hash mismatch, uniqueness/revision conflict or SQLite failure prevents final success and returns a typed CT-019 error. Acceptance criteria: AC-OBS-003 and AC-DQ-001. Edge cases: interruption before publish, after publish/before commit, after commit/before UI response; repeated key; global ID collision; corrupt referenced artifact; operator cleanup. Traceability: FR-OBS-003, FR-DQ-001; NFR-REL-002/SEC-001/SEC-002; CT-011/015/016/019; ADR-003/007/008.
 
 ## CT-019: Typed Events and Validation Catalogs
-Status: Proposed
+Status: Accepted
+Acceptance: BASELINE-ACCEPTANCE-001, 2026-10-15; reviewed M02 scope only.
 Applicability: M02; AI/tool/review events require later extension
 
 Purpose: give rejected input, conflicts, limits and operational failures unambiguous typed diagnostics and lineage.
@@ -292,12 +315,13 @@ Disposition precedence: validate request/config and safety boundary first; if co
 Invariants: each validation diagnostic cites its catalog rule/severity; event outcomes match run/import disposition; fields have the declared types, nullability and active stage. Unknown codes are rejected. Failure behavior: invalid event/result cannot be committed as success; report a sanitized operational error. Acceptance criteria: AC-DQ-002/003, AC-OBS-001/003. Edge cases: no valid manifest IDs, unknown enum, truncated diagnostics, hash mismatch versus identity reuse, secret canary and replay event. Traceability: FR-DQ-002/003, FR-OBS-001/003; BR-DQ-001/002/004; NFR-OBS-001/SEC-001; CT-005/011/015/018; ADR-007.
 
 ## CT-020: Bounded Parser Configuration
-Status: Proposed
+Status: Accepted
+Acceptance: BASELINE-ACCEPTANCE-001, 2026-10-15; reviewed M02 scope only.
 Applicability: M02
 
-Purpose: bound local parsing and diagnostics without inventing credit thresholds or production SLAs. Label this profile **Provisional Local Safety Limits**. Numeric values are technical proposals authorized for review; they become approved effective defaults only with explicit acceptance of this corrected profile.
+Purpose: bound local parsing and diagnostics without inventing credit thresholds or production SLAs. Label this profile **Provisional Local Safety Limits**. The exact technical profile was approved by the owner under BASELINE-ACCEPTANCE-001 on 2026-10-15 as configurable local-development safety limits only.
 
-| Field | Type / nullable | Proposed default and measured unit |
+| Field | Type / nullable | Approved provisional default and measured unit |
 |---|---|---|
 | parser_config_version | Version / no | provisional-local-v1 |
 | max_input_bytes | positive integer / no | 10,485,760 bytes (10 MiB), combined manifest and CSV before parsing |
@@ -310,7 +334,7 @@ Purpose: bound local parsing and diagnostics without inventing credit thresholds
 Rationale: 10 MiB/50,000 rows constrain a local demonstrator's input/workload without a memory-SLA claim; the lower manifest cap protects small metadata; field/numeric caps prevent pathological tokens; diagnostic cap avoids unbounded error output. These caps are deliberately rounded safety bounds, not benchmark-derived optimal values or financial thresholds. Configurability is explicit: validate positive integers and max_manifest_bytes <= max_input_bytes, version/hash effective values under CT-016, and record them in each run. Changes after acceptance require the normal reviewed configuration/change process; no unlogged UI increase.
 Enforcement: check byte caps before unbounded decoding; field and token size while parsing; reject on the first record beyond max_rows instead of dropping it. Parser implementation must keep parsing/storage bounded, but these numbers alone do not certify peak memory. At max_collected_findings stop diagnostics/scan, mark report_complete=false and reject because defects were found. This diagnostic cap never returns metrics over inspected rows. If fewer invalid rows exist and all rows are scanned, report_complete=true.
 Failure behavior: invalid configuration returns configuration_invalid; input/row/field/numeric overflow returns resource_limit/limit_failed. Malformed or negative numeric tokens within limits remain invalid_value rather than being repaired. Acceptance criteria: AC-DQ-003. Edge cases: exact bound versus bound+1; multibyte field byte count; header excluded from count; monetary sum longer than one input token; diagnostic cap and early oversized input with unavailable hash.
-Traceability: FR-DQ-003, AC-DQ-003, BR-DQ-004, NFR-PERF-001; CT-001/015/016/017/019; ADR-002/003. OQ-008 safety portion records the proposed profile separately from OPEN measured-performance and AI budgets.
+Traceability: FR-DQ-003, AC-DQ-003, BR-DQ-004, NFR-PERF-001; CT-001/015/016/017/019; ADR-002/003. OQ-008 safety portion records the approved profile separately from OPEN measured-performance and AI budgets.
 
 ## Contract evolution
 After acceptance, changes in meaning, units, nullability, enums, rounding, identity, safety defaults or invalid-input behavior require a CR and compatibility decision. No runtime payload/database exists yet, so this Proposed correction has no product migration. Preserve earlier proposal history in Git and CR-001. Later section presence does not make its feature implementation-ready.

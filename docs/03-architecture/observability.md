@@ -4,6 +4,8 @@ Status: Proposed
 Version: 1.0
 Last Updated: 2026-10-15
 
+Acceptance: [BASELINE-ACCEPTANCE-001](../changes/BASELINE-ACCEPTANCE-001.md), owner approval 2026-10-15, reviewed commit archived baseline review revision. Accepted: M02 CT-019 event schema, CT-011/017 lineage/replay and CT-018 retention. Proposed: provider/tool/review usage, cost and lifecycle extensions. Container remains Proposed.
+
 Applicability: M02 lineage/events; M03/M04 provider/tool/review extensions remain Proposed.
 
 ADR-007 proposes structured local events. CT-019 is the M02 event/validation catalog; CT-011 defines its run manifest. No model event, cost field or checkpoint is required by M02. Hosted tracing is deferred until justified.

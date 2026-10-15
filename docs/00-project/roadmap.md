@@ -1,8 +1,10 @@
 # Vertical slice roadmap
 
-Status: Proposed
+Status: Accepted
 Version: 1.0
-Last Updated: 2026-10-14
+Last Updated: 2026-10-15
+
+Acceptance: [BASELINE-ACCEPTANCE-001](../changes/BASELINE-ACCEPTANCE-001.md), owner approval 2026-10-15, reviewed commit archived baseline review revision. Only the document/section scope recorded there is accepted; later feature gates remain in force.
 
 | Stage | Applicability and deliverable | Exit evidence |
 |---|---|---|

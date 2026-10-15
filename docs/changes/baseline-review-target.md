@@ -7,17 +7,17 @@ Last Updated: 2026-10-15
 Review target commit: archived baseline review revision
 Review target parent: archived baseline review parent
 Review target message: spec: finalize RiskLens baseline v1.0 for acceptance
-Acceptance state: NOT ACCEPTED.
+Acceptance state: ACCEPTED WITH EXPLICIT DEFERRALS under BASELINE-ACCEPTANCE-001, 2026-10-15.
 
-This locator identifies the final verified Proposed revision. A subsequent metadata-only commit contains this pointer, the prepared acceptance record and CR-001 execution metadata only. It does not alter reviewed normative behavior or constitute acceptance. The [final closure report](../00-project/baseline-closure-report.md) records verification of the target. The exact proposed document/ID/variant subsets and retained gates are in [BASELINE-ACCEPTANCE-001.md](BASELINE-ACCEPTANCE-001.md), with Approval State Awaiting Owner Approval. Actual accepted sets remain empty. GOV-001 requires explicit human approval of this immutable revision and exact scope before changing acceptance status.
+This locator preserves the immutable reviewed Proposed revision. Preparation metadata at archived acceptance preparation revision did not constitute approval. The Product Owner subsequently approved that exact SHA and prepared scope on 2026-10-15. [BASELINE-ACCEPTANCE-001](BASELINE-ACCEPTANCE-001.md) now records the actual accepted subsets, individual ADRs, constraints and retained gates. Acceptance recording changes status metadata only; the reviewed normative behavior is preserved. The [final closure report](../00-project/baseline-closure-report.md) remains historical pre-acceptance review evidence.
 
 ## Preserved earlier targets
-The earlier corrected proposal remains at archived corrected proposal revision, parent archived initial proposal revision, message `docs: correct proposed baseline under CR-001 owner decisions`. Its pointer was recorded in archived baseline review parent. No owner acceptance of that revision was received. The pre-correction proposal and historical review remain preserved in Git. The final target above is the current approval candidate.
+The earlier corrected proposal remains at archived corrected proposal revision, parent archived initial proposal revision, message `docs: correct proposed baseline under CR-001 owner decisions`. Its pointer was recorded in archived baseline review parent. No owner acceptance of that revision was received. The pre-correction proposal and historical review remain preserved in Git. The final target above is the owner-approved specification revision for the recorded subsets.
 
-## Next human action
-Review the final target commit and prepared record, including CT-020's six unchanged provisional safety settings. Approve or amend the exact proposed subsets and retained gates explicitly. Only after receiving that decision may a separate governance task complete the pending record and update the approved IDs/variants and individual ADRs. M02 feature preparation/implementation remains a separate task.
+## Next recommended task
+Separately authorize preparation of the first M02 feature specification under GOV-002. Acceptance alone does not authorize feature creation or implementation. Deferred M03/M04 details remain Proposed/Open.
 
-## Suggested approval wording, not an approval received
+## Historical suggested wording, not the source of approval
 ```text
 I approve the Proposed RiskLens Specification Baseline v1.0 at
 archived baseline review revision with exactly the proposed
@@ -29,4 +29,4 @@ Proposed boundary, including ADR-001. Record my identity and approval date
 under GOV-001. Do not start M02.
 ```
 
-No human approval of that target has been received. Do not treat the example above as authorization.
+Actual human approval was received on 2026-10-15 and is recorded in BASELINE-ACCEPTANCE-001. The historical example above is not that approval.

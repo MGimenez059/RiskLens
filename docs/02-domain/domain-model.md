@@ -2,10 +2,12 @@
 
 Status: Proposed
 Version: 1.0
-Last Updated: 2026-10-14
+Last Updated: 2026-10-15
+
+Acceptance: [BASELINE-ACCEPTANCE-001](../changes/BASELINE-ACCEPTANCE-001.md), owner approval 2026-10-15, reviewed commit archived baseline review revision. M02 aggregates/value objects, lifecycle, global identity and domain isolation are Accepted. Later entities/lifecycle/diagram relationships remain Proposed; the container remains Proposed.
 
 ## M02 aggregates and value objects
-Status: Proposed
+Status: Accepted
 Applicability: M02
 
 | Concept | Responsibility | Invariant |
@@ -22,7 +24,7 @@ Applicability: M02
 | AnalysisRun | Execution aggregate with input/config/code lineage and stage outcomes. | CT-011/016; Application alone changes lifecycle; terminal results immutable. |
 
 ## M02 run lifecycle
-Status: Proposed
+Status: Accepted
 Applicability: M02
 
 created -> running -> succeeded, rejected, conflict, limit_failed or failed. Terminal runs are immutable. A new analysis key/config deliberately creates a new run, optionally with parent_run_id. Exact same analysis key/fingerprint replays the original result, without a new successful commit.

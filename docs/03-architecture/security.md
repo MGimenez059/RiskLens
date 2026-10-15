@@ -4,6 +4,8 @@ Status: Proposed
 Version: 1.0
 Last Updated: 2026-10-15
 
+Acceptance: [BASELINE-ACCEPTANCE-001](../changes/BASELINE-ACCEPTANCE-001.md), owner approval 2026-10-15, reviewed commit archived baseline review revision. Accepted: M02 synthetic inputs, path/state confinement, bounded parsing, parameterized SQL, redacted events, artifact publication and whole-state cleanup. Proposed: AI/tool/review/cloud controls. Container remains Proposed.
+
 Initial operation is local, single-user, single-writer and restricted to controlled synthetic USD fixtures. M02 safety bounds are CT-020 and publication/cleanup CT-018. AI/tool/review controls in the table are M03/M04 Proposed variants; they do not gate deterministic M02 readiness. Assets are run integrity, policy provenance, review decisions, API credentials and artifacts. Synthetic labeling alone does not prove absence of personal data; use approved generators.
 
 | Threat | Control | Verification |
