@@ -2,7 +2,7 @@
 
 Status: Proposed
 Version: 1.0
-Last Updated: 2026-10-14
+Last Updated: 2026-10-15
 
 - ID: CR-001
 - Owner: Product owner.
@@ -10,7 +10,9 @@ Last Updated: 2026-10-14
 - Date: 2026-10-14
 - Current baseline: Corrected Proposed v1.0; baseline acceptance pending.
 - Pre-correction source commit: archived initial proposal revision.
-- Corrected review target: archived corrected proposal revision, verified Proposed; details in baseline-review-target.md.
+- Initial corrected review target: archived corrected proposal revision, preserved historical Proposed revision.
+- Final reviewed target: archived baseline review revision, verified Proposed; details in baseline-review-target.md.
+- Prepared acceptance record: BASELINE-ACCEPTANCE-001.md, Approval State Awaiting Owner Approval; actual accepted sets empty.
 - Decision: Owner correction decisions recorded in owner-decisions-2026-10-14.md; exact corrected baseline and ADR acceptance pending GOV-001.
 
 ## Pre-correction behavior
@@ -19,7 +21,7 @@ The baseline retains Default as a possible v1 release blocker, requires an unava
 ## Proposed behavior and motivation
 Use the findings and exact source IDs in the [Baseline Acceptance Review](../00-project/baseline-acceptance-review.md). The proposal limits M02 to deterministic local analytics and preserves complete-population calculation. Default is deferred beyond current v1 with no invented definition. Raw concentration shares are separate from detector thresholds. M03 synthesis is restricted to observations and investigation suggestions until M04 business-action review is available.
 
-The owner authorized correction of the Proposed canonical specifications. USD/exposure/global identity/platform/retention decisions are recorded and applied. CT-015 through CT-020 and FR-DQ-003/FR-OBS-003 supply the missing M02 contracts and verification boundaries. Exact provisional safety values await review of the corrected commit; empirical performance and AI budgets remain separately open. Later graph, policy and copilot details stay Proposed behind feature-readiness gates. See the current baseline-correction-report.md; the earlier acceptance review is historical context.
+The owner authorized correction of the Proposed canonical specifications. USD/exposure/global identity/platform/retention decisions are recorded and applied. CT-015 through CT-020 and FR-DQ-003/FR-OBS-003 supply the missing M02 contracts and verification boundaries. Exact provisional safety values await review of the final commit; empirical performance and AI budgets remain separately open. Later graph, policy and copilot details stay Proposed behind feature-readiness gates. See the [final closure report](../00-project/baseline-closure-report.md) and [prepared record](BASELINE-ACCEPTANCE-001.md). The baseline-correction-report.md and earlier acceptance review retain prior correction/review evidence.
 
 ## Impact analysis
 
@@ -43,8 +45,12 @@ The owner authorized correction of the Proposed canonical specifications. USD/ex
 - [ ] Accepted ADRs and per-ID statuses updated explicitly.
 - [x] Requirement/contract traceability updated; product tests remain planned.
 - [x] CHANGELOG records the applied specification revisions.
-- [x] Final documentation/tooling verification recorded in baseline-correction-report.md.
+- [x] Prior correction verification retained in baseline-correction-report.md; final closure verification recorded in baseline-closure-report.md.
 - [x] Exact review-target SHA recorded after commit in baseline-review-target.md.
+- [x] Final closure verifies REVIEW-001 through REVIEW-006, REVIEW-007 scope, REVIEW-015 and REVIEW-016 without product implementation.
+- [x] Final specification review target committed; prepared record pins its exact SHA and proposed per-ID/variant scope.
+- [x] Post-target metadata verification passed: 63 Markdown documents and 15 governance tests; reviewed normative paths unchanged.
+- [ ] Owner acceptance of the final target and exact subsets received; no approval inferred from preparation.
 - [ ] Later applicable product tests/evals implemented and executed in their features.
 
 This CR proposes specification changes only. It does not authorize the first vertical slice or require implementing product functionality during this review.
