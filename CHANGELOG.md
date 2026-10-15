@@ -2,7 +2,14 @@
 
 Status: Proposed
 Version: 1.0
-Last Updated: 2026-10-14
+Last Updated: 2026-10-15
+
+## 2026-10-15: Final baseline closure for owner acceptance
+- Rechecked the previously identified correction findings, M02 boundary and later deferral gates without redesign or scope changes.
+- Aligned M02 observability field names with CT-019 and artifact verification references with AC-OBS-003.
+- Preserved provisional safety values and all baseline/ADR Proposed states.
+- Prepared a final closure report, immutable review target and owner-approval record through separate specification and record-preparation commits.
+- No product functionality, M02 work, push or owner approval.
 
 ## 2026-10-14: CR-001 corrected Proposed baseline
 - Recorded explicit owner correction decisions and preserved the pre-correction proposal/review in Git.

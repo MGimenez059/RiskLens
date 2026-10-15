@@ -2,7 +2,7 @@
 
 Status: Proposed
 Version: 1.0
-Last Updated: 2026-10-14
+Last Updated: 2026-10-15
 
 AI-powered Credit Risk Intelligence Platform.
 
@@ -11,6 +11,7 @@ RiskLens is a proposed local platform for credit risk analysts and Data teams to
 **Current deliverable: Corrected Specification Baseline v1.0, Proposed.** Product functionality is not implemented. Owner correction decisions are recorded; acceptance of the exact corrected commit is still pending. M02 is deterministic USD analytics and local persistence; AI and review are later gated capabilities.
 
 ## Review entry points
+- [Final baseline closure report](docs/00-project/baseline-closure-report.md). The review-target locator identifies the final immutable Proposed revision; acceptance remains an explicit owner decision.
 - [Current correction report](docs/00-project/baseline-correction-report.md), [immutable review target](docs/changes/baseline-review-target.md) and [CR-001](docs/changes/CR-001-baseline-acceptance-corrections.md).
 - [Baseline and acceptance procedure](docs/00-project/baseline.md).
 - [Review report and file inventory](docs/00-project/review-report.md).
