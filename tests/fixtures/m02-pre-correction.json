@@ -1,0 +1,102 @@
+{
+  "producer_code_revision": "30da62290b09122c179c43a8a7dd9430c675a9177d55bcdae9265159fc04bd11",
+  "run_id": "c2552fded76f41c8a5b7e54e2add326e",
+  "records": {
+    "bundles": [
+      [
+        "2f8c471f864a16f8bef33f2258800bef7d58df9b4ca6394bf9c34654c00efdc7",
+        325,
+        268,
+        null
+      ]
+    ],
+    "runs": [
+      [
+        "c2552fded76f41c8a5b7e54e2add326e",
+        "legacy-analysis",
+        "379dfa988d8bf1865b35edb16dd79d8cc1f53b2cdded97f8bd5a1b5d413ed49f",
+        2,
+        "{\"bundle_ref\":\"2f8c471f864a16f8bef33f2258800bef7d58df9b4ca6394bf9c34654c00efdc7\",\"import_idempotency_key\":\"legacy-import\",\"analysis_idempotency_key\":\"legacy-analysis\",\"mode\":\"deterministic_m02\",\"requested_stages\":[\"validate_portfolio\",\"calculate_metrics\"],\"configuration\":{\"config_version\":\"m02-v1\",\"currency\":\"USD\",\"contract_version\":\"1.0\",\"calculation_version\":\"m02-v1\",\"rule_config_version\":\"m02-v1\",\"arithmetic_version\":\"ct-017-v1\",\"parser_config_version\":\"provisional-local-v1\",\"parser_limits\":{\"max_input_bytes\":10485760,\"max_manifest_bytes\":65536,\"max_rows\":50000,\"max_field_bytes\":4096,\"max_numeric_chars\":24,\"max_collected_findings\":1000},\"publication_version\":\"ct-018-v1\",\"event_catalog_version\":\"ct-019-v1\"},\"parent_run_id\":null}",
+        "{\"run\":{\"run_id\":\"c2552fded76f41c8a5b7e54e2add326e\",\"parent_run_id\":null,\"import_id\":\"698664eaf0094457ae755282e1500931\",\"snapshot_id\":\"risklens-sample-v1\",\"revision\":2,\"status\":\"succeeded\",\"created_at\":\"2026-11-10T19:26:03.428Z\",\"completed_at\":\"2026-11-10T19:26:03.553Z\",\"input_hash\":\"2f8c471f864a16f8bef33f2258800bef7d58df9b4ca6394bf9c34654c00efdc7\",\"canonical_input_hash\":\"3cd81340f272dcf2c0a427f486fd0563911e73b6527acea7e8f232f46b56c444\",\"config_hash\":\"6ec7be87b2df2eae0a2aaf53c44f86d7852a04d256e8758c12dc0c1ac499cb79\",\"baseline_version\":\"1.0\",\"contract_version\":\"1.0\",\"rule_version\":\"m02-v1\",\"code_revision\":\"30da62290b09122c179c43a8a7dd9430c675a9177d55bcdae9265159fc04bd11\",\"requested_stages\":[\"validate_portfolio\",\"calculate_metrics\"],\"stage_outcomes\":[{\"stage\":\"load_portfolio\",\"status\":\"completed\",\"reason\":null,\"attempt_count\":1,\"duration_ms\":16},{\"stage\":\"validate_portfolio\",\"status\":\"completed\",\"reason\":null,\"attempt_count\":1,\"duration_ms\":15},{\"stage\":\"calculate_metrics\",\"status\":\"completed\",\"reason\":null,\"attempt_count\":1,\"duration_ms\":0},{\"stage\":\"finalize\",\"status\":\"completed\",\"reason\":null,\"attempt_count\":1,\"duration_ms\":70}],\"output_artifact_ids\":[\"8d0ef6c6b4354c4884ed12382c7a1287\",\"8580a0d3a9354351b42b4f961d0b5477\",\"25d1e644d60342ce8eef2c01ddcc0e45\",\"52eff47a45ae4c28bc69a96492cbb4f4\",\"e37b3ed61a274f04b9291bafd88df7f2\"],\"errors\":[]},\"configuration\":{\"config_version\":\"m02-v1\",\"currency\":\"USD\",\"contract_version\":\"1.0\",\"calculation_version\":\"m02-v1\",\"rule_config_version\":\"m02-v1\",\"arithmetic_version\":\"ct-017-v1\",\"parser_config_version\":\"provisional-local-v1\",\"parser_limits\":{\"max_input_bytes\":10485760,\"max_manifest_bytes\":65536,\"max_rows\":50000,\"max_field_bytes\":4096,\"max_numeric_chars\":24,\"max_collected_findings\":1000},\"publication_version\":\"ct-018-v1\",\"event_catalog_version\":\"ct-019-v1\"},\"validation\":{\"import_id\":\"698664eaf0094457ae755282e1500931\",\"run_id\":\"c2552fded76f41c8a5b7e54e2add326e\",\"import_idempotency_key\":\"legacy-import\",\"disposition\":\"valid\",\"snapshot_id\":\"risklens-sample-v1\",\"portfolio_id\":\"risklens-sample\",\"input_hash\":\"2f8c471f864a16f8bef33f2258800bef7d58df9b4ca6394bf9c34654c00efdc7\",\"source_sha256\":\"c8ea5f511d12508920e50f441a3b70b8c28a3d0c2366c2152c5799fb00fde59b\",\"canonical_input_hash\":\"3cd81340f272dcf2c0a427f486fd0563911e73b6527acea7e8f232f46b56c444\",\"parser_config_version\":\"provisional-local-v1\",\"parser_config_hash\":\"048bbb4ee254cb3b12f2c9c15d99b87532859e2f08c7b6ede9fa6c7bf3841396\",\"findings\":[],\"validation_report_id\":\"8580a0d3a9354351b42b4f961d0b5477\",\"report_hash\":\"0db2072eeda532a79aaf183cc07d266c7a020eb3291d4a654b0de56613c0a4d4\",\"report_complete\":true,\"error_code\":null},\"metrics\":null,\"metrics_hash\":\"c46f0f89f6d913b649ea5c75ceaebd1e78a0beabd962042102d2c404bd605d10\",\"evidence\":[{\"evidence_id\":\"e65f9bf7be7244af8886aa84af57c95d\",\"run_id\":\"c2552fded76f41c8a5b7e54e2add326e\",\"kind\":\"snapshot\",\"artifact_hash\":\"3cd81340f272dcf2c0a427f486fd0563911e73b6527acea7e8f232f46b56c444\",\"locator\":{\"snapshot_id\":\"risklens-sample-v1\"}},{\"evidence_id\":\"b8f2dbb7595f4b209492c93de12481b9\",\"run_id\":\"c2552fded76f41c8a5b7e54e2add326e\",\"kind\":\"source_row\",\"artifact_hash\":\"2f8c471f864a16f8bef33f2258800bef7d58df9b4ca6394bf9c34654c00efdc7\",\"locator\":{\"snapshot_id\":\"risklens-sample-v1\",\"row_number\":2,\"field\":null}},{\"evidence_id\":\"d6ced66339be41569b7fdca44c720df4\",\"run_id\":\"c2552fded76f41c8a5b7e54e2add326e\",\"kind\":\"validation_report\",\"artifact_hash\":\"0db2072eeda532a79aaf183cc07d266c7a020eb3291d4a654b0de56613c0a4d4\",\"locator\":{\"report_id\":\"8580a0d3a9354351b42b4f961d0b5477\"}},{\"evidence_id\":\"d92bedefe9b74e99927ec9bdb084969c\",\"run_id\":\"c2552fded76f41c8a5b7e54e2add326e\",\"kind\":\"metric\",\"artifact_hash\":\"33adf84effbc11b12b02e97c64029c3a6c4f7668160301045ed747ee5c284b7b\",\"locator\":{\"metrics_id\":\"52eff47a45ae4c28bc69a96492cbb4f4\",\"metric_key\":\"total_exposure\"}}]}"
+      ]
+    ],
+    "snapshots": [
+      [
+        "risklens-sample-v1",
+        "risklens-sample",
+        "2f8c471f864a16f8bef33f2258800bef7d58df9b4ca6394bf9c34654c00efdc7",
+        "3cd81340f272dcf2c0a427f486fd0563911e73b6527acea7e8f232f46b56c444"
+      ]
+    ],
+    "imports": [
+      [
+        "legacy-import",
+        "048bbb4ee254cb3b12f2c9c15d99b87532859e2f08c7b6ede9fa6c7bf3841396",
+        "2f8c471f864a16f8bef33f2258800bef7d58df9b4ca6394bf9c34654c00efdc7",
+        "698664eaf0094457ae755282e1500931",
+        "0db2072eeda532a79aaf183cc07d266c7a020eb3291d4a654b0de56613c0a4d4"
+      ]
+    ],
+    "artifacts": [
+      [
+        "c2552fded76f41c8a5b7e54e2add326e",
+        "8d0ef6c6b4354c4884ed12382c7a1287",
+        "input_bundle",
+        "2f8c471f864a16f8bef33f2258800bef7d58df9b4ca6394bf9c34654c00efdc7"
+      ],
+      [
+        "c2552fded76f41c8a5b7e54e2add326e",
+        "8580a0d3a9354351b42b4f961d0b5477",
+        "validation_report",
+        "0db2072eeda532a79aaf183cc07d266c7a020eb3291d4a654b0de56613c0a4d4"
+      ],
+      [
+        "c2552fded76f41c8a5b7e54e2add326e",
+        "25d1e644d60342ce8eef2c01ddcc0e45",
+        "validated_snapshot",
+        "3cd81340f272dcf2c0a427f486fd0563911e73b6527acea7e8f232f46b56c444"
+      ],
+      [
+        "c2552fded76f41c8a5b7e54e2add326e",
+        "52eff47a45ae4c28bc69a96492cbb4f4",
+        "metrics",
+        "33adf84effbc11b12b02e97c64029c3a6c4f7668160301045ed747ee5c284b7b"
+      ],
+      [
+        "c2552fded76f41c8a5b7e54e2add326e",
+        "e37b3ed61a274f04b9291bafd88df7f2",
+        "event_batch",
+        "d1f17c09febf42f5d1ad2cefa727878139e3035db6411d959e8560e6e2be1192"
+      ]
+    ],
+    "events": [
+      [
+        "c2552fded76f41c8a5b7e54e2add326e",
+        "95e2fcc6216743769473592481eab2cb",
+        "{\"event_id\":\"95e2fcc6216743769473592481eab2cb\",\"run_id\":\"c2552fded76f41c8a5b7e54e2add326e\",\"revision\":1,\"stage\":\"load_portfolio\",\"attempt\":1,\"event_type\":\"operation_started\",\"timestamp_utc\":\"2026-11-10T19:26:03.444Z\",\"duration_ms\":null,\"outcome\":\"in_progress\",\"code\":null,\"input_hash\":\"2f8c471f864a16f8bef33f2258800bef7d58df9b4ca6394bf9c34654c00efdc7\",\"output_artifact_hash\":null}"
+      ],
+      [
+        "c2552fded76f41c8a5b7e54e2add326e",
+        "5622f359b3294ff9a6f7e4a67a8e6e45",
+        "{\"event_id\":\"5622f359b3294ff9a6f7e4a67a8e6e45\",\"run_id\":\"c2552fded76f41c8a5b7e54e2add326e\",\"revision\":2,\"stage\":\"validate_portfolio\",\"attempt\":1,\"event_type\":\"validation_completed\",\"timestamp_utc\":\"2026-11-10T19:26:03.554Z\",\"duration_ms\":15,\"outcome\":\"valid\",\"code\":null,\"input_hash\":\"2f8c471f864a16f8bef33f2258800bef7d58df9b4ca6394bf9c34654c00efdc7\",\"output_artifact_hash\":\"0db2072eeda532a79aaf183cc07d266c7a020eb3291d4a654b0de56613c0a4d4\"}"
+      ],
+      [
+        "c2552fded76f41c8a5b7e54e2add326e",
+        "5567fd5a2f774a48b314e0da41027e03",
+        "{\"event_id\":\"5567fd5a2f774a48b314e0da41027e03\",\"run_id\":\"c2552fded76f41c8a5b7e54e2add326e\",\"revision\":2,\"stage\":\"calculate_metrics\",\"attempt\":1,\"event_type\":\"metrics_completed\",\"timestamp_utc\":\"2026-11-10T19:26:03.554Z\",\"duration_ms\":0,\"outcome\":\"succeeded\",\"code\":null,\"input_hash\":\"2f8c471f864a16f8bef33f2258800bef7d58df9b4ca6394bf9c34654c00efdc7\",\"output_artifact_hash\":\"33adf84effbc11b12b02e97c64029c3a6c4f7668160301045ed747ee5c284b7b\"}"
+      ],
+      [
+        "c2552fded76f41c8a5b7e54e2add326e",
+        "d92e056b9d1a44caace7a017660ad732",
+        "{\"event_id\":\"d92e056b9d1a44caace7a017660ad732\",\"run_id\":\"c2552fded76f41c8a5b7e54e2add326e\",\"revision\":2,\"stage\":\"finalize\",\"attempt\":1,\"event_type\":\"publication_committed\",\"timestamp_utc\":\"2026-11-10T19:26:03.554Z\",\"duration_ms\":71,\"outcome\":\"succeeded\",\"code\":null,\"input_hash\":\"2f8c471f864a16f8bef33f2258800bef7d58df9b4ca6394bf9c34654c00efdc7\",\"output_artifact_hash\":null}"
+      ]
+    ]
+  },
+  "artifacts": {
+    "0db2072eeda532a79aaf183cc07d266c7a020eb3291d4a654b0de56613c0a4d4": "{\"disposition\":\"valid\",\"error_code\":null,\"findings\":[],\"input_hash\":\"2f8c471f864a16f8bef33f2258800bef7d58df9b4ca6394bf9c34654c00efdc7\",\"message\":\"The bundle passed validation.\",\"report_complete\":true,\"report_id\":\"8580a0d3a9354351b42b4f961d0b5477\",\"rule_id\":null,\"snapshot_id\":\"risklens-sample-v1\"}",
+    "2f8c471f864a16f8bef33f2258800bef7d58df9b4ca6394bf9c34654c00efdc7": "RiskLensBundleV1\u0000\u0000\u0000\u0000\u0000\u0000\u0001E{\"as_of\":\"2026-10-15\",\"currency\":\"USD\",\"generator_version\":\"risklens-sample-v1\",\"portfolio_id\":\"risklens-sample\",\"portfolio_name\":\"RiskLens sample portfolio\",\"schema_version\":\"1.0\",\"seed\":0,\"snapshot_id\":\"risklens-sample-v1\",\"source_sha256\":\"c8ea5f511d12508920e50f441a3b70b8c28a3d0c2366c2152c5799fb00fde59b\",\"synthetic\":true}\u0000\u0000\u0000\u0000\u0000\u0000\u0001\floan_id,customer_id,original_principal,outstanding_principal,days_past_due,loan_status,origination_date,segment\nsample-loan-01,sample-borrower-01,100.00,100.00,0,open,2026-01-01,consumer\nsample-loan-02,sample-borrower-02,300.00,300.00,5,open,2026-01-01,small-business\n",
+    "33adf84effbc11b12b02e97c64029c3a6c4f7668160301045ed747ee5c284b7b": "{\"as_of\":\"2026-10-15\",\"calculation_version\":\"m02-v1\",\"concentration\":[{\"dimension\":\"borrower\",\"group_exposure\":\"100.00\",\"group_id\":\"sample-borrower-01\",\"share\":{\"denominator\":\"400.00\",\"numerator\":\"100.00\",\"reason\":null,\"rule_id\":\"BR-RISK-003\",\"status\":\"available\",\"unit\":\"exposure_ratio\",\"value\":\"0.2500\"}},{\"dimension\":\"borrower\",\"group_exposure\":\"300.00\",\"group_id\":\"sample-borrower-02\",\"share\":{\"denominator\":\"400.00\",\"numerator\":\"300.00\",\"reason\":null,\"rule_id\":\"BR-RISK-003\",\"status\":\"available\",\"unit\":\"exposure_ratio\",\"value\":\"0.7500\"}},{\"dimension\":\"segment\",\"group_exposure\":\"100.00\",\"group_id\":\"consumer\",\"share\":{\"denominator\":\"400.00\",\"numerator\":\"100.00\",\"reason\":null,\"rule_id\":\"BR-RISK-003\",\"status\":\"available\",\"unit\":\"exposure_ratio\",\"value\":\"0.2500\"}},{\"dimension\":\"segment\",\"group_exposure\":\"300.00\",\"group_id\":\"small-business\",\"share\":{\"denominator\":\"400.00\",\"numerator\":\"300.00\",\"reason\":null,\"rule_id\":\"BR-RISK-003\",\"status\":\"available\",\"unit\":\"exposure_ratio\",\"value\":\"0.7500\"}}],\"currency\":\"USD\",\"delinquency_count_rate\":{\"denominator\":\"2\",\"numerator\":\"1\",\"reason\":null,\"rule_id\":\"BR-RISK-002\",\"status\":\"available\",\"unit\":\"count_ratio\",\"value\":\"0.5000\"},\"delinquency_exposure_rate\":{\"denominator\":\"400.00\",\"numerator\":\"300.00\",\"reason\":null,\"rule_id\":\"BR-RISK-002\",\"status\":\"available\",\"unit\":\"exposure_ratio\",\"value\":\"0.7500\"},\"evidence_ids\":[\"e65f9bf7be7244af8886aa84af57c95d\"],\"loan_count\":2,\"metrics_id\":\"52eff47a45ae4c28bc69a96492cbb4f4\",\"open_loan_count\":2,\"rule_config_version\":\"m02-v1\",\"run_id\":\"c2552fded76f41c8a5b7e54e2add326e\",\"snapshot_id\":\"risklens-sample-v1\",\"total_exposure\":\"400.00\"}",
+    "3cd81340f272dcf2c0a427f486fd0563911e73b6527acea7e8f232f46b56c444": "{\"as_of\":\"2026-10-15\",\"currency\":\"USD\",\"generator_version\":\"risklens-sample-v1\",\"loans\":[{\"customer_id\":\"sample-borrower-01\",\"days_past_due\":0,\"loan_id\":\"sample-loan-01\",\"loan_status\":\"open\",\"original_principal\":\"100.00\",\"origination_date\":\"2026-01-01\",\"outstanding_principal\":\"100.00\",\"segment\":\"consumer\"},{\"customer_id\":\"sample-borrower-02\",\"days_past_due\":5,\"loan_id\":\"sample-loan-02\",\"loan_status\":\"open\",\"original_principal\":\"300.00\",\"origination_date\":\"2026-01-01\",\"outstanding_principal\":\"300.00\",\"segment\":\"small-business\"}],\"portfolio_id\":\"risklens-sample\",\"portfolio_name\":\"RiskLens sample portfolio\",\"schema_version\":\"1.0\",\"seed\":0,\"snapshot_id\":\"risklens-sample-v1\",\"synthetic\":true}",
+    "d1f17c09febf42f5d1ad2cefa727878139e3035db6411d959e8560e6e2be1192": "[{\"attempt\":1,\"code\":null,\"duration_ms\":null,\"event_id\":\"95e2fcc6216743769473592481eab2cb\",\"event_type\":\"operation_started\",\"input_hash\":\"2f8c471f864a16f8bef33f2258800bef7d58df9b4ca6394bf9c34654c00efdc7\",\"outcome\":\"in_progress\",\"output_artifact_hash\":null,\"revision\":1,\"run_id\":\"c2552fded76f41c8a5b7e54e2add326e\",\"stage\":\"load_portfolio\",\"timestamp_utc\":\"2026-11-10T19:26:03.444Z\"},{\"attempt\":1,\"code\":null,\"duration_ms\":15,\"event_id\":\"5622f359b3294ff9a6f7e4a67a8e6e45\",\"event_type\":\"validation_completed\",\"input_hash\":\"2f8c471f864a16f8bef33f2258800bef7d58df9b4ca6394bf9c34654c00efdc7\",\"outcome\":\"valid\",\"output_artifact_hash\":\"0db2072eeda532a79aaf183cc07d266c7a020eb3291d4a654b0de56613c0a4d4\",\"revision\":2,\"run_id\":\"c2552fded76f41c8a5b7e54e2add326e\",\"stage\":\"validate_portfolio\",\"timestamp_utc\":\"2026-11-10T19:26:03.554Z\"},{\"attempt\":1,\"code\":null,\"duration_ms\":0,\"event_id\":\"5567fd5a2f774a48b314e0da41027e03\",\"event_type\":\"metrics_completed\",\"input_hash\":\"2f8c471f864a16f8bef33f2258800bef7d58df9b4ca6394bf9c34654c00efdc7\",\"outcome\":\"succeeded\",\"output_artifact_hash\":\"33adf84effbc11b12b02e97c64029c3a6c4f7668160301045ed747ee5c284b7b\",\"revision\":2,\"run_id\":\"c2552fded76f41c8a5b7e54e2add326e\",\"stage\":\"calculate_metrics\",\"timestamp_utc\":\"2026-11-10T19:26:03.554Z\"},{\"attempt\":1,\"code\":null,\"duration_ms\":71,\"event_id\":\"d92e056b9d1a44caace7a017660ad732\",\"event_type\":\"publication_committed\",\"input_hash\":\"2f8c471f864a16f8bef33f2258800bef7d58df9b4ca6394bf9c34654c00efdc7\",\"outcome\":\"succeeded\",\"output_artifact_hash\":null,\"revision\":2,\"run_id\":\"c2552fded76f41c8a5b7e54e2add326e\",\"stage\":\"finalize\",\"timestamp_utc\":\"2026-11-10T19:26:03.554Z\"}]"
+  }
+}

@@ -2,7 +2,19 @@
 
 Status: Proposed
 Version: 1.0
-Last Updated: 2026-10-15
+Last Updated: 2026-11-10
+
+## 2026-11-10: Correct M02 contract enforcement
+- Enforced the CT-003 kind and concrete locator type across Python and JSON. Added persisted-result checks for reference targets, run identity, terminal state, validation outcomes and metric lineage.
+- Preserved pre-correction records and artifact hashes. Incompatible persisted records return `integrity_error` and remain available for diagnosis.
+- Recorded committed CT-018 publication metadata for new results and preserved the original import key when an interrupted analysis is replayed.
+- Added contract matrices, an actual pre-correction fixture and regressions for incompatible and inconsistent persisted results.
+
+## 2026-11-10: Implement the M02 deterministic analysis slice
+- Recorded the separately authorized FEAT-001 scope, bundled sample decision and GOV-002 readiness.
+- Added strict bounded CSV/JSON import, exact USD metrics, transactional local state, replay and recovery, and a Streamlit dashboard.
+- Added contract, integration, unit and Streamlit tests and mapped them to the existing accepted criteria.
+- Added reproducible local workload measurements for the open OQ-008 milestone gate.
 
 ## 2026-10-15: Record owner acceptance with explicit deferrals
 - Recorded the Product Owner's explicit approval of reviewed commit archived baseline review revision and the prepared BASELINE-ACCEPTANCE-001 scope.

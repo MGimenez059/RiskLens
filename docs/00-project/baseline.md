@@ -6,7 +6,7 @@ Last Updated: 2026-10-15
 
 Acceptance: [BASELINE-ACCEPTANCE-001](../changes/BASELINE-ACCEPTANCE-001.md), owner approval 2026-10-15, reviewed commit archived baseline review revision. Only the document/section scope recorded there is accepted; later feature gates remain in force.
 
-The Product Owner accepted the specified v1 direction and M02 subsets with explicit deferrals under BASELINE-ACCEPTANCE-001. Product functionality is NOT IMPLEMENTED. Initial executable code is limited to repository verification and development tooling.
+The Product Owner accepted the specified v1 direction and M02 subsets with explicit deferrals under BASELINE-ACCEPTANCE-001. At acceptance, executable code was limited to repository verification and development tooling. The separate M02 task is tracked in [FEAT-001](../features/FEAT-001-deterministic-analysis.md).
 
 ## Canonical reading order
 1. [Principles and precedence](principles.md), [writing policy](writing-policy.md).

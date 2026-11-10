@@ -1,4 +1,4 @@
-"""Repository checks only. Product acceptance tests remain unimplemented."""
+"""Repository governance checks, separate from the product acceptance tests."""
 
 from scripts.check_baseline import (
     ROOT,
