@@ -13,6 +13,7 @@ from risklens.application.contracts import (
     OperationError,
     Result,
     RunManifest,
+    canonical,
     sha256,
 )
 from risklens.application.service import TERMINAL, AnalysisService
@@ -53,8 +54,8 @@ def _submit(service: AnalysisService, manifest: bytes, csv: bytes) -> Result:
     )
 
 
-def _history_changed() -> None:
-    st.query_params["run"] = st.session_state["history"]
+def _history_changed(widget_key: str) -> None:
+    st.query_params["run"] = st.session_state[widget_key]
 
 
 def _history(runs: list[RunManifest]) -> str | None:
@@ -71,14 +72,17 @@ def _history(runs: list[RunManifest]) -> str | None:
     selected = st.query_params.get("run", runs[0].run_id)
     if selected not in labels:
         selected = runs[0].run_id
-    if st.session_state.get("history") != selected:
-        st.session_state["history"] = selected
+    # Streamlit can retain a selected option's old label when only its status changes.
+    widget_key = f"history-{sha256(canonical(labels))}"
+    if st.session_state.get(widget_key) != selected:
+        st.session_state[widget_key] = selected
     return st.sidebar.selectbox(
         "Saved analysis",
         list(labels),
-        key="history",
+        key=widget_key,
         format_func=labels.__getitem__,
         on_change=_history_changed,
+        args=(widget_key,),
         help="Times are in UTC.",
     )
 
