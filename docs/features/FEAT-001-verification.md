@@ -5,11 +5,13 @@ Version: 1.0
 Last Updated: 2026-11-10
 Applicability: M02
 
-The measurements and 59-case test results below are preliminary evidence from before the contract correction. They do not establish the results for the corrected implementation commit.
+Implementation revision: `archived measured implementation revision`.
+
+Verification date: 2026-11-10, America/Buenos_Aires.
 
 ## Functional verification
 
-The implementation and tests map to the accepted M02 criteria in the [traceability matrix](../05-testing/traceability.md). The 59 passing pytest cases include 44 product and 15 repository governance cases. The product cases exercise strict ingress and cataloged diagnostics, parser bounds, exact and unavailable rates, independent concentration groups, ownership and replay, interruptions around publication and commit, integrity errors, cleanup, and Streamlit sample, manual and history flows.
+The locked quality checks ran in a clean worktree at the implementation revision. All six commands passed. Pytest collected and passed 117 cases, including 102 product cases and 15 repository governance cases. The documentation checker verified 67 Markdown files at that revision. The [traceability matrix](../05-testing/traceability.md) links implementation to requirements.
 
 Local quality commands:
 
@@ -22,11 +24,30 @@ uv run --locked pytest
 uv run --locked python scripts/check_baseline.py
 ```
 
-Microsoft Edge visual verification used the actual Streamlit process on loopback. It confirmed the bundled portfolio's USD 400.00, 50.00% and 75.00%, both concentration tabs, the same selected run after browser refresh, and no page-level horizontal overflow at 430 px. The local QA screenshot is in the ignored `artifacts/private/m02-dashboard.png` path.
+| M02 criterion | Evidence at the implementation revision |
+|---|---|
+| AC-DQ-001 | `test_FR_DQ_001_sample_identity_and_restart` and `test_FR_DQ_001_changed_configuration_and_separate_keys` cover valid ingestion, ownership, replay and key conflicts. |
+| AC-DQ-002 | `test_FR_DQ_002_catalog` and `test_FR_DQ_002_ordinal_and_nullable_segment` cover strict input defects, ordinal locations and the unspecified group. `test_FR_DQ_002_invalid_manifest_blocks_metrics` verifies whole-input rejection. |
+| AC-DQ-003 | Parser, byte, row, field, numeric and diagnostic limit cases in `tests/contract/test_bundle.py` and `tests/integration/test_analysis.py` check bounds, incomplete reports and wide aggregates. |
+| AC-RISK-001 | `tests/unit/test_metrics.py` checks sample totals, exact operands, rounding, availability and group totals. `test_CT_004_CT_015_CT_016_cross_validation` rejects an inconsistent stored rate. `test_NFR_REL_002_semantic_hash_ignores_row_order_and_raw_encoding` compares semantic hashes. |
+| AC-UI-001 | `tests/e2e/test_dashboard.py` checks sample and manual results, errors, empty data, reruns, linked new analysis, reopened history and the selected run's updated status after recovery. See the browser evidence below. |
+| AC-OBS-001 | `test_FR_OBS_001_versions_events_and_scoped_evidence` verifies versions, effective limits, events, provenance and run scoping. `test_CT_003_requires_exact_kind_locator_pair` exercises all 16 pairings in three representations. `test_CT_003_CT_011_persisted_contract_violation_preserves_evidence` verifies controlled integrity errors and unchanged data. |
+| AC-OBS-003 | `test_FR_OBS_003_publication_and_restart` injects interruption across creation, publication and commit. Additional integration cases check retention, cleanup, missing or corrupted artifacts and store failure. `test_CT_016_resume_retains_the_original_import_key`, `test_CT_018_publication_metadata_commits_with_its_artifact` and `test_CT_018_pre_correction_result_opens_unchanged` verify recovery and compatibility. |
+
+## Browser evidence
+
+Playwright drove Microsoft Edge 157.0.4341.42 against the actual Streamlit process on loopback. The browser workspace used fresh synthetic state, and the server ran the same implementation revision as the locked checks.
+
+- **Sample.** Verified USD 400.00, 50.00% and 75.00%, the exact operands, and both concentration tabs.
+- **Manual input.** Uploaded a synthetic one-loan USD bundle with USD 160.00 outstanding. A second manifest with unsupported currency produced a diagnostic that identified the currency field. Reusing the valid snapshot ID with changed bytes produced `identity_conflict`. A 65,537-byte manifest produced `resource_limit`.
+- **History and refresh.** Selected existing sample and manual runs. **New analysis** created a different run ID and preserved the parent's ID in provenance. Browser refresh retained the selected child.
+- **Recovery.** Injected interruption before the final metadata transaction, restarted the Streamlit process, and selected the pending analysis. **Resume analysis** completed the original run, advanced its revision and displayed `Succeeded` in history without a browser refresh.
+
+The live page had no page-level horizontal overflow at a width of 430 pixels.
 
 ## Measured workload
 
-Measurements ran on Windows 11 build 26200, Intel Core i3-N305, eight logical processors, 7.63 GiB physical memory, CPython 3.12.13, Pydantic 2.14.3 and Streamlit 1.67.0 from `uv.lock`. The starting Git revision was `archived acceptance record revision`. The measured working-tree implementation records runtime source SHA-256 `30da62290b09122c179c43a8a7dd9430c675a9177d55bcdae9265159fc04bd11` in its run manifests.
+Measurements ran on Windows 11 build 26200, Intel Core i3-N305, eight logical processors, 7.63 GiB physical memory, CPython 3.12.13, Pydantic 2.14.3 and Streamlit 1.67.0 from `uv.lock`. All nine trials ran from the clean implementation revision above. The runtime source SHA-256 recorded by that Windows checkout was `fda77c5eb6f33074791a2584484eabc82bdd4d1fc809f87a49b6ef4ba0f90bc6`.
 
 Run each command three times in a fresh process from the repository root:
 
@@ -38,11 +59,11 @@ uv run --locked python scripts/benchmark_m02.py --rows 50000
 
 The [benchmark script](../../scripts/benchmark_m02.py) uses the bundled sample for two rows and the fixed seed 0 benchmark generator for larger workloads. The timer covers opening new local state, registering the bundle, validating, calculating, publishing, committing and reopening the verified result. Process startup, fixture generation, browser and Streamlit rendering are outside the timer. Peak memory is the OS-reported working set high-water mark for the entire benchmark process. Each trial starts with a new temporary SQLite and artifact directory.
 
-| Loans | Bundle bytes | Elapsed trials (s) | Median (s) | Peak working set trials (MiB) |
-|---:|---:|---|---:|---|
-| 2 | 593 | 0.4205, 0.3630, 0.3763 | 0.3763 | 35.63, 35.72, 35.62 |
-| 10,000 | 701,337 | 1.0734, 1.0072, 1.1166 | 1.0734 | 49.99, 49.89, 49.99 |
-| 50,000 | 3,504,973 | 4.2237, 3.8441, 3.9274 | 3.9274 | 104.16, 105.57, 105.56 |
+| Loans | Bundle bytes | Elapsed trials (s) | Worst (s) | Peak working set trials (MiB) | Worst (MiB) |
+|---:|---:|---|---:|---|---:|
+| 2 | 593 | 0.3274, 0.4070, 0.3942 | 0.4070 | 36.84, 36.68, 36.90 | 36.90 |
+| 10,000 | 701,337 | 1.3917, 1.2743, 1.2623 | 1.3917 | 51.59, 51.62, 51.58 | 51.62 |
+| 50,000 | 3,504,973 | 4.7889, 4.6892, 4.7068 | 4.7889 | 105.27, 105.82, 106.50 | 106.50 |
 
 Each workload returned the same input and metric hashes across all three trials.
 
@@ -56,11 +77,12 @@ Each workload returned the same input and metric hashes across all three trials.
 
 Apply these thresholds to the slowest of three elapsed trials and the highest working set on the measured workstation or a comparable environment.
 
-| Loans | Maximum elapsed time (s) | Maximum peak working set (MiB) |
-|---:|---:|---:|
-| 2 | 1.0 | 64 |
-| 10,000 | 2.0 | 80 |
-| 50,000 | 6.0 | 160 |
+| Loans | Maximum elapsed time (s) | Maximum peak working set (MiB) | Observed comparison |
+|---:|---:|---:|---|
+| 2 | 1.0 | 64 | Within both proposed targets |
+| 10,000 | 2.0 | 80 | Within both proposed targets |
+| 50,000 | 6.0 | 160 | Within both proposed targets |
 
 The proposed limits allow for local filesystem and interpreter variation across these fixed workloads. The largest bundle exercises the approved row cap with about 3.34 MiB of input. The separate exact byte and field caps are covered by boundary tests. Browser performance, other hardware and combined worst-case workload shapes remain outside this measurement.
 
+Each accepted M02 functional criterion has recorded evidence. OQ-008 measured performance remains open pending explicit Product Owner approval of the three targets. That decision gates M02 closure.

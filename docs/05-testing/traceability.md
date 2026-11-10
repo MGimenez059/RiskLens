@@ -6,6 +6,8 @@ Last Updated: 2026-11-10
 
 Definitions are canonical in functional-requirements.md, non-functional-requirements.md, business-rules.md, data-contracts.md, architecture.md and evaluation-spec.md. M02 rows identify implementation and existing tests. Later rows marked NOT IMPLEMENTED retain planned tests. N/A means the evaluation category does not apply; it is not a waived requirement.
 
+The [M02 verification report](../features/FEAT-001-verification.md) maps every accepted M02 criterion to evidence from implementation revision `archived measured implementation revision`.
+
 | Requirement | Business rule / principle | Contract | ADR | Architecture component | Implementation | Verification | Eval |
 |---|---|---|---|---|---|---|---|
 | FR-DQ-001 | BR-DQ-001/002/003 | CT-001/002/005/015/016/017/018/019 | ADR-002/003/008 | CMP-APPLICATION, CMP-INFRASTRUCTURE | BundleScanner, AnalysisService._validate, LocalState.register/finish | tests/integration/test_analysis.py::test_FR_DQ_001_sample_identity_and_restart | EVAL-DQ-001/002 |
