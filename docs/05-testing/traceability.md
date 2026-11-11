@@ -6,7 +6,7 @@ Last Updated: 2026-11-10
 
 Definitions are canonical in functional-requirements.md, non-functional-requirements.md, business-rules.md, data-contracts.md, architecture.md and evaluation-spec.md. M02 rows identify implementation and existing tests. Later rows marked NOT IMPLEMENTED retain planned tests. N/A means the evaluation category does not apply; it is not a waived requirement.
 
-The [M02 verification report](../features/FEAT-001-verification.md) maps every accepted M02 criterion to evidence from implementation revision `archived measured implementation revision`.
+The [M02 verification report](../features/FEAT-001-verification.md) maps every accepted M02 criterion to evidence for the implementation corresponding to revision `8c0c37a785b3dc7563201544b7229c9bb5a90054`.
 
 | Requirement | Business rule / principle | Contract | ADR | Architecture component | Implementation | Verification | Eval |
 |---|---|---|---|---|---|---|---|

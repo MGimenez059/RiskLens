@@ -10,7 +10,7 @@ RiskLens is a proposed local platform for credit risk analysts and Data teams to
 
 **Current deliverable.** The local [M02 deterministic analysis dashboard](docs/features/FEAT-001-deterministic-analysis.md) imports synthetic USD portfolios, reports validation outcomes, calculates exact metrics, and stores verified results for later inspection. Milestone completion is pending approval of the measured OQ-008 targets.
 
-The Product Owner approved reviewed commit archived baseline review revision and the exact subsets in [BASELINE-ACCEPTANCE-001](docs/changes/BASELINE-ACCEPTANCE-001.md) on 2026-10-15.
+The Product Owner approved the archived baseline review revision and the exact subsets in [BASELINE-ACCEPTANCE-001](docs/changes/BASELINE-ACCEPTANCE-001.md) on 2026-10-15.
 
 ## Run the local dashboard
 

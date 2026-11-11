@@ -5,7 +5,9 @@ Version: 1.0
 Last Updated: 2026-11-10
 Applicability: M02
 
-Implementation revision: `archived measured implementation revision`.
+Implementation revision in this repository: `8c0c37a785b3dc7563201544b7229c9bb5a90054`.
+
+The original verification used the archived checkout. Its runtime source, tests, dashboard configuration, benchmark script and dependency lockfile match the revision above byte for byte.
 
 Verification date: 2026-11-10, America/Buenos_Aires.
 

@@ -17,3 +17,6 @@ data/*
 artifacts/private/
 .risklens/
 *.sqlite*
+
+/artifacts/public/
+/docs/06-communication/
