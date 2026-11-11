@@ -2,7 +2,7 @@
 
 Status: Proposed
 Version: 1.0
-Last Updated: 2026-10-15
+Last Updated: 2026-11-11
 
 Acceptance: [BASELINE-ACCEPTANCE-001](../changes/BASELINE-ACCEPTANCE-001.md), owner approval 2026-10-15, reviewed commit archived baseline review revision. This mixed-stage container remains Proposed; only the annotated IDs/variants are Accepted.
 
@@ -334,7 +334,7 @@ Purpose: bound local parsing and diagnostics without inventing credit thresholds
 Rationale: 10 MiB/50,000 rows constrain a local demonstrator's input/workload without a memory-SLA claim; the lower manifest cap protects small metadata; field/numeric caps prevent pathological tokens; diagnostic cap avoids unbounded error output. These caps are deliberately rounded safety bounds, not benchmark-derived optimal values or financial thresholds. Configurability is explicit: validate positive integers and max_manifest_bytes <= max_input_bytes, version/hash effective values under CT-016, and record them in each run. Changes after acceptance require the normal reviewed configuration/change process; no unlogged UI increase.
 Enforcement: check byte caps before unbounded decoding; field and token size while parsing; reject on the first record beyond max_rows instead of dropping it. Parser implementation must keep parsing/storage bounded, but these numbers alone do not certify peak memory. At max_collected_findings stop diagnostics/scan, mark report_complete=false and reject because defects were found. This diagnostic cap never returns metrics over inspected rows. If fewer invalid rows exist and all rows are scanned, report_complete=true.
 Failure behavior: invalid configuration returns configuration_invalid; input/row/field/numeric overflow returns resource_limit/limit_failed. Malformed or negative numeric tokens within limits remain invalid_value rather than being repaired. Acceptance criteria: AC-DQ-003. Edge cases: exact bound versus bound+1; multibyte field byte count; header excluded from count; monetary sum longer than one input token; diagnostic cap and early oversized input with unavailable hash.
-Traceability: FR-DQ-003, AC-DQ-003, BR-DQ-004, NFR-PERF-001; CT-001/015/016/017/019; ADR-002/003. OQ-008 safety portion records the approved profile separately from OPEN measured-performance and AI budgets.
+Traceability: FR-DQ-003, AC-DQ-003, BR-DQ-004, NFR-PERF-001; CT-001/015/016/017/019; ADR-002/003. The [OQ-008 safety decision](../00-project/open-questions.md) records the approved parser profile.
 
 ## Contract evolution
 After acceptance, changes in meaning, units, nullability, enums, rounding, identity, safety defaults or invalid-input behavior require a CR and compatibility decision. No runtime payload/database exists yet, so this Proposed correction has no product migration. Preserve earlier proposal history in Git and CR-001. Later section presence does not make its feature implementation-ready.

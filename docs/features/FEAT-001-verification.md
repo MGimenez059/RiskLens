@@ -2,7 +2,7 @@
 
 Status: Proposed
 Version: 1.0
-Last Updated: 2026-11-10
+Last Updated: 2026-11-11
 Applicability: M02
 
 Implementation revision in this repository: `8c0c37a785b3dc7563201544b7229c9bb5a90054`.
@@ -75,16 +75,16 @@ Each workload returned the same input and metric hashes across all three trials.
 | 10,000 | `39f405f0c0ee350dff62aa4aae381ef656466309b9b32190b947cc275921eea9` | `bf90a835995d598c754664b83e610c13bd301cff266d161b00cf30bc505cf85e` |
 | 50,000 | `7f4df6a43c04e0070cb3cb88c5998c039de44ca53d2bf51e4816fe7fc44af0e2` | `3d1a62c37d357f8271fb7eaaac244384384a56efebd1430da96f376e82ab799d` |
 
-## Proposed OQ-008 local targets
+## Approved OQ-008 local targets
 
-Apply these thresholds to the slowest of three elapsed trials and the highest working set on the measured workstation or a comparable environment.
+On 2026-11-11, the Product Owner explicitly approved the three elapsed-time and peak-memory targets below under NFR-PERF-001. Apply the targets to the slowest of three elapsed trials and the highest working set on the measured workstation or a comparable environment. The values are local benchmark criteria.
 
 | Loans | Maximum elapsed time (s) | Maximum peak working set (MiB) | Observed comparison |
 |---:|---:|---:|---|
-| 2 | 1.0 | 64 | Within both proposed targets |
-| 10,000 | 2.0 | 80 | Within both proposed targets |
-| 50,000 | 6.0 | 160 | Within both proposed targets |
+| 2 | 1.0 | 64 | Within both approved targets |
+| 10,000 | 2.0 | 80 | Within both approved targets |
+| 50,000 | 6.0 | 160 | Within both approved targets |
 
-The proposed limits allow for local filesystem and interpreter variation across these fixed workloads. The largest bundle exercises the approved row cap with about 3.34 MiB of input. The separate exact byte and field caps are covered by boundary tests. Browser performance, other hardware and combined worst-case workload shapes remain outside this measurement.
+The approved targets allow for local filesystem and interpreter variation across these fixed workloads. The largest bundle exercises the approved row cap with about 3.34 MiB of input. The separate exact byte and field caps are covered by boundary tests. Browser performance, other hardware and combined worst-case workload shapes remain outside this measurement.
 
-Each accepted M02 functional criterion has recorded evidence. OQ-008 measured performance remains open pending explicit Product Owner approval of the three targets. That decision gates M02 closure.
+Each accepted M02 functional criterion has recorded evidence. The recorded trials meet all three approved targets, closing the OQ-008 measured-performance gate for M02.

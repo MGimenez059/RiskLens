@@ -2,7 +2,7 @@
 
 Status: Proposed
 Version: 1.0
-Last Updated: 2026-10-15
+Last Updated: 2026-11-11
 
 Decision owner: product owner. Technical preparation: Architect/Auditor. Recorded decisions are sourced in [owner-decisions-2026-10-14.md](../changes/owner-decisions-2026-10-14.md). CLOSED means the stated owner decision is recorded. Formal baseline subset acceptance is recorded separately in [BASELINE-ACCEPTANCE-001](../changes/BASELINE-ACCEPTANCE-001.md), dated 2026-10-15. Historical IDs remain stable. Split portions use the original ID plus a named portion rather than silently reusing IDs.
 
@@ -17,7 +17,7 @@ Decision owner: product owner. Technical preparation: Architect/Auditor. Recorde
 | OQ-006 | OPEN | Policy authority, scope/precedence and curated rule/source/coverage definitions. Conflicts stay indeterminate; corpus correction is outside a run. | M03 policy feature. |
 | OQ-007 | OPEN | Embedding, index adapter, chunking/top_k and sufficiency benchmark. ADR-005 defers selection. | M03 retrieval feature. |
 | OQ-008 / M02 safety | CLOSED | Exact configurable CT-020 profile accepted by the Product Owner on 2026-10-15 under BASELINE-ACCEPTANCE-001; local-development safety limits only, not SLAs, guarantees or financial thresholds. | Configuration acceptance satisfied; GOV-002 and separate implementation authorization remain. |
-| OQ-008 / measured performance | OPEN | The [M02 verification report](../features/FEAT-001-verification.md) records nine trials on the corrected implementation. The worst elapsed time and memory for each workload meet the proposed local targets. The targets await explicit Product Owner approval. | M02 milestone release; later affected releases. |
+| OQ-008 / measured performance | CLOSED | On 2026-11-11, the Product Owner explicitly approved the three [local benchmark targets](../features/FEAT-001-verification.md#approved-oq-008-local-targets). All nine recorded trials met them. | M02 milestone performance gate satisfied; apply the relevant performance checks to affected later releases. |
 | OQ-008 / AI budgets | OPEN | Model/tool call, context, timeout, retry and cost budgets. | M03 AI and M04 copilot readiness. |
 | OQ-009 / M02 platform | CLOSED | SQLite plus immutable local artifacts, Streamlit and one local writer; CT-018. Domain remains independent. | ADR-003/004 Accepted under BASELINE-ACCEPTANCE-001; later graph/review details remain Proposed. |
 | OQ-009 / graph persistence | OPEN | Checkpoint adapter, schema compatibility and cross-store graph reconciliation. | M03 graph readiness; ADR-001. |

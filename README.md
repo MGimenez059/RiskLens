@@ -2,13 +2,13 @@
 
 Status: Proposed
 Version: 1.0
-Last Updated: 2026-11-10
+Last Updated: 2026-11-11
 
 AI-powered Credit Risk Intelligence Platform.
 
 RiskLens is a proposed local platform for credit risk analysts and Data teams to inspect synthetic loan portfolios, calculate deterministic metrics, investigate evidence and review policy-grounded AI interpretation.
 
-**Current deliverable.** The local [M02 deterministic analysis dashboard](docs/features/FEAT-001-deterministic-analysis.md) imports synthetic USD portfolios, reports validation outcomes, calculates exact metrics, and stores verified results for later inspection. Milestone completion is pending approval of the measured OQ-008 targets.
+**Current deliverable.** The local [M02 deterministic analysis dashboard](docs/features/FEAT-001-deterministic-analysis.md) imports synthetic USD portfolios, reports validation outcomes, calculates exact metrics, and stores verified results for later inspection. The M02 milestone met the [approved local benchmark targets](docs/features/FEAT-001-verification.md#approved-oq-008-local-targets).
 
 The Product Owner approved the archived baseline review revision and the exact subsets in [BASELINE-ACCEPTANCE-001](docs/changes/BASELINE-ACCEPTANCE-001.md) on 2026-10-15.
 

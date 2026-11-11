@@ -2,7 +2,7 @@
 
 Status: Proposed
 Version: 1.0
-Last Updated: 2026-11-10
+Last Updated: 2026-11-11
 
 Definitions are canonical in functional-requirements.md, non-functional-requirements.md, business-rules.md, data-contracts.md, architecture.md and evaluation-spec.md. M02 rows identify implementation and existing tests. Later rows marked NOT IMPLEMENTED retain planned tests. N/A means the evaluation category does not apply; it is not a waived requirement.
 
@@ -26,7 +26,7 @@ The [M02 verification report](../features/FEAT-001-verification.md) maps every a
 | FR-OBS-002 | P-009/010/012 | CT-011/012 | ADR-001/003 | CMP-GRAPH | NOT IMPLEMENTED | test_FR_OBS_002_crash_replay | EVAL-GUARDRAIL-003 |
 | NFR-REL-001 | P-010 | CT-011/012 | ADR-001/003 | CMP-GRAPH | NOT IMPLEMENTED | test_NFR_REL_001_transaction_recovery | EVAL-AGENT-003 |
 | NFR-SEC-001 | P-017/018 | CT-003/015/018/019; CT-010/013 later | ADR-003/006/007 | CMP-APPLICATION, CMP-INFRASTRUCTURE | LocalState._path, parameterized SQLite, sanitized catalog messages | tests/contract/test_bundle.py::test_FR_DQ_002_catalog and test_NFR_SEC_001_state_path_confinement | EVAL-GUARDRAIL-001 M03/M04 only |
-| NFR-PERF-001 | P-015, BR-DQ-004 | CT-001/011/020 | ADR-003/004 | CMP-APPLICATION | ParserLimits and scripts/benchmark_m02.py | CT-020 boundary tests and FEAT-001 verification. Measured targets pending approval. | N/A: benchmark required |
+| NFR-PERF-001 | P-015, BR-DQ-004 | CT-001/011/020 | ADR-003/004 | CMP-APPLICATION | ParserLimits and scripts/benchmark_m02.py | CT-020 boundary tests and [FEAT-001 benchmark evidence and owner approval](../features/FEAT-001-verification.md#approved-oq-008-local-targets). | N/A: benchmark required |
 | NFR-OBS-001 | P-012 | CT-011 | ADR-007 | CMP-INFRASTRUCTURE | Event, RunManifest, LocalState.events | tests/integration/test_analysis.py::test_FR_OBS_001_versions_events_and_scoped_evidence | EVAL-AGENT-003 |
 | NFR-AI-001 | P-004/005 | CT-008/010 | ADR-005/006 | CMP-APPLICATION | NOT IMPLEMENTED | test_NFR_AI_001_claim_support | EVAL-RAG-001, EVAL-GUARDRAIL-002 |
 | NFR-MNT-001 | P-007/009/016 | CT-001/004 | ADR-008/009 | CMP-DOMAIN | src/risklens/domain/metrics.py uses only the Python standard library | tests/test_baseline.py::test_domain_import_boundaries and tests/unit/test_metrics.py | N/A: static/offline tests |

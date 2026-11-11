@@ -2,7 +2,7 @@
 
 Status: Proposed
 Version: 1.0
-Last Updated: 2026-11-10
+Last Updated: 2026-11-11
 Applicability: M02
 
 ## Problem and scope
@@ -43,7 +43,7 @@ The owner's M02 task of 2026-11-10 authorizes this feature and selects a bundled
 
 The accepted baseline and the per-ID approval of FR-DQ-001/002/003, FR-RISK-001, FR-UI-001, FR-OBS-001 M02 and FR-OBS-003 supply the requirements and acceptance criteria above. The accepted ADRs and the closed M02 portions of OQ-001, OQ-008, OQ-009 and OQ-010 supply the decisions needed to implement the slice. This document records the task authorization, problem, inputs, outputs, interaction, contracts, edge cases and test design. The M02 implementation gate is satisfied for this scope.
 
-OQ-008 measured performance gates milestone completion. The [verification report](FEAT-001-verification.md) records the environment, workloads, commands, source revision, measured time and memory, and targets proposed for owner approval. GOV-003 requires executed checks and actual implementation/test references.
+The Product Owner approved the [OQ-008 local benchmark targets](FEAT-001-verification.md#approved-oq-008-local-targets) on 2026-11-11, satisfying the M02 performance gate. The verification report records the environment, workloads, commands, implementation revision and measurements. GOV-003 requires executed checks and actual implementation/test references.
 
 ## Contract correction
 

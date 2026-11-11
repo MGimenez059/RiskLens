@@ -2,7 +2,10 @@
 
 Status: Proposed
 Version: 1.0
-Last Updated: 2026-11-10
+Last Updated: 2026-11-11
+
+## 2026-11-11: Record M02 performance approval
+- Recorded owner approval of the measured OQ-008 benchmark targets for NFR-PERF-001 and closed the M02 milestone gate.
 
 ## 2026-11-10: Correct M02 contract enforcement
 - Enforced the CT-003 kind and concrete locator type across Python and JSON. Added persisted-result checks for reference targets, run identity, terminal state, validation outcomes and metric lineage.
